@@ -7,7 +7,9 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-router.post('/', (req, res, next) => {
+router.post('/add-diary', (req, res, next) => {
+  const user = req.user
+
   const {
     category,
     description,
@@ -17,7 +19,11 @@ router.post('/', (req, res, next) => {
     sourceTitle,
     sourceLink
   } = req.body;
-  Diary.create({
+
+  console.log(req.body)
+
+  const newDiary = new Diary({
+    _owner: user,
     category,
     description,
     timeSpent,
@@ -26,8 +32,10 @@ router.post('/', (req, res, next) => {
     sourceTitle,
     sourceLink
   })
+
+  newDiary.save()
     .then(() => {
-      res.redirect('/');
+      res.redirect('/home');
     })
     .catch(err => next(err));
 });
@@ -37,7 +45,11 @@ router.get('/about', (req, res, next) => {
 });
 
 router.get('/home', (req, res, next) => {
-  res.render('index2');
+  Diary.find()
+    .then((diaries) => {
+      console.log(diaries)
+      res.render('index2', { diaries });
+    })
 });
 
 router.get('/home/profile', (req, res, next) => {

@@ -9,7 +9,7 @@ const diarySchema = new Schema({
   category: { type: String, required: true },
   description: String,
   timeSpent: Number,
-  difficulty: { type: String, enum: ["1", "2", "3", "4", "5"] },
+  difficulty: { type: Number, max: 5, min: 1 },
   sourceType: { type: String, enum: ["video", "book", "article", "course", "other"] },
   sourceTitle: { type: String, required: true },
   sourceLink: { type: String }
