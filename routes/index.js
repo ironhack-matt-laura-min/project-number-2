@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/add-diary', (req, res, next) => {
-  const user = req.user
+  const user = req.user;
 
   const {
     category,
@@ -20,7 +20,7 @@ router.post('/add-diary', (req, res, next) => {
     sourceLink
   } = req.body;
 
-  console.log(req.body)
+  console.log(req.body);
 
   const newDiary = new Diary({
     _owner: user,
@@ -31,9 +31,10 @@ router.post('/add-diary', (req, res, next) => {
     sourceType,
     sourceTitle,
     sourceLink
-  })
+  });
 
-  newDiary.save()
+  newDiary
+    .save()
     .then(() => {
       res.redirect('/home');
     })
@@ -45,11 +46,10 @@ router.get('/about', (req, res, next) => {
 });
 
 router.get('/home', (req, res, next) => {
-  Diary.find()
-    .then((diaries) => {
-      console.log(diaries)
-      res.render('index2', { diaries });
-    })
+  Diary.find().then(diaries => {
+    console.log(diaries);
+    res.render('index2', { diaries });
+  });
 });
 
 router.get('/home/profile', (req, res, next) => {

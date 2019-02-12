@@ -1,25 +1,31 @@
+<div class="d-flex align-items-center justify-content-center" id="login">
+  <div>
+    <form action="/auth/login" method="POST" id="form-container">
+      <div class="d-flex justify-content-center">
+        <h1>Login</h1>
+      </div>
+      <br>
+      <div class="form-group">
+        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+      </div>
 
-<h2>Login</h2>
-
-<form action="/auth/login" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
-
-  <br><br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
-
-  <br><br>
-
-  <button>Login</button>
-
-  <p class="account-message">
-    Don't have an account yet?
-    <a href="/auth/signup">Signup</a>
-  </p>
-</form>
+      <div class="form-group">
+        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+      </div>
+      <div class="checkbox mb-2 d-flex justify-content-center">
+        <label><input type="checkbox" value="remember-me"> Remember me</label>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" id="loginButton" class="btn-block btn-lg btn-color">Continue</button>
+      </div>
+      <br>
+      <p class="account-message">
+        Don't have an account?
+        <a href="/auth/signup" class="p">Signup</a>
+      </p>
+      {{#if message }}
+      <div class="error-message">{{ message }}</div>
+      {{/if}}
+    </form>
+  </div>
+</div>
