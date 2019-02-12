@@ -2,10 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const diarySchema = new Schema({
-  title: { type: String, required: true },
+  _owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  category: { type: String, required: true },
   description: String,
   timeSpent: Number,
-  difficulty: { type: String, enum: ["1", "2", "3", "4", "5"] },
+  difficulty: { type: Number, max: 5, min: 1 },
   sourceType: { type: String, enum: ["video", "book", "article", "course", "other"] },
   sourceTitle: { type: String, required: true },
   sourceLink: { type: String }

@@ -1,1 +1,42 @@
-<h1>Hello dude</h1>
+<form action="/add-post">
+  <label for="category">Cateogy</label>
+  <input type="text" name="category" id="category">
+  <label for="timeSpent">Time spent</label>
+  <input type="Number" name="timeSpent" id="timeSpent">
+  <label for="difficulty">Difficulty</label>
+  <select name="difficulty" id="difficulty">
+    <option value="1">Easy</option>
+    <option value="2">Medium</option>
+    <option value="3">Challenging</option>
+    <option value="4">Hard</option>
+    <option value="5">Very hard</option>
+  </select>
+  <label for="sourceType">Source type</label>
+  <select name="sourceType" id="sourceType">
+    <option value="book">book</option>
+    <option value="video">video</option>
+    <option value="article">article</option>
+    <option value="course">course</option>
+    <option value="other">other</option>
+  </select>
+  <label for="sourceTitle">Source title</label>
+  <input type="text" name="sourceTitle" id="sourceTitle">
+  <label for="sourceLink">Source link</label>
+  <input type="text" name="sourceLink" id="sourceLink">
+  <br>
+  <br>
+  <br>
+  <div>
+    <textarea onkeyup="auto_grow(this)" rows="20" cols="150"></textarea>
+
+  </div>
+
+
+</form>
+
+<script>
+  function auto_grow(element) {
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight) + "px";
+  }
+</script>
