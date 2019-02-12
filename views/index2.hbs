@@ -26,8 +26,13 @@
   <br>
   <br>
   <br>
+  <div id="editor">
+    <p>Hello World!</p>
+    <p>Some initial <strong>bold</strong> text</p>
+    <p><br></p>
+  </div>
   <div>
-    <textarea onkeyup="auto_grow(this)" rows="20" cols="150" name="description"></textarea>
+    <input type="hidden" name="description">
     <button type="submit">add Diary</button>
 
   </div>
@@ -35,9 +40,40 @@
 
 </form>
 
+{{#each diaries}}
+<div>
+  {{this.category}}
+  <div class="desc">
+    {{{this.description}}}
+  </div>
+
+</div>
+
+{{/each}}
 <script>
+
   function auto_grow(element) {
     element.style.height = "5px";
     element.style.height = (element.scrollHeight) + "px";
   }
+
+
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+
+  // Listen for submit events of the form
+  document.querySelector('form').onsubmit = function (event) {
+    // event.preventDefault() // stop the submission
+    // Save in the hidden input "description" the content of the ql editor
+    document.querySelector('form input[name="description"]').value = document.querySelector('.ql-editor').innerHTML
+  }
+
+
+
+
+
+
+
+
 </script>

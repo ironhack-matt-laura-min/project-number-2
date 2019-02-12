@@ -45,7 +45,11 @@ router.get('/about', (req, res, next) => {
 });
 
 router.get('/home', (req, res, next) => {
-  res.render('index2');
+  Diary.find()
+    .then((diaries) => {
+      console.log(diaries)
+      res.render('index2', { diaries });
+    })
 });
 
 router.get('/home/profile', (req, res, next) => {
