@@ -1,13 +1,37 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px 'Sailec Light', sans-serif; }
+
+.bg-color {
+  background-color: #262831; }
+
+.navbar {
+  margin: -50px; }
+
+.bg-font {
+  color: #fff; }
 
 a {
-  color: #00B7FF; }
+  color: #57c6c8; }
+
+.p {
+  color: #57c6c8; }
+
+.btn-color {
+  background-color: #57c6c8; }
 
 textarea {
   resize: none;
   overflow: hidden;
   min-height: 253px; }
+
+#login {
+  height: 80vh; }
+
+#signup {
+  height: 80vh; }
+
+#loginButton {
+  border-color: black; }
 
 /*# sourceMappingURL=style.css.map */
