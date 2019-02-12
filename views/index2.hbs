@@ -1,5 +1,5 @@
-<form action="/add-post">
-  <label for="category">Cateogy</label>
+<form action="/add-diary" method="post">
+  <label for="category">Category</label>
   <input type="text" name="category" id="category">
   <label for="timeSpent">Time spent</label>
   <input type="Number" name="timeSpent" id="timeSpent">
@@ -27,7 +27,8 @@
   <br>
   <br>
   <div>
-    <textarea onkeyup="auto_grow(this)" rows="20" cols="150"></textarea>
+    <textarea onkeyup="auto_grow(this)" rows="20" cols="150" name="description"></textarea>
+    <button type="submit">add Diary</button>
 
   </div>
 
