@@ -13,6 +13,10 @@ const session = require("express-session");
 const MongoStore = require('connect-mongo')(session);
 const flash = require("connect-flash");
 
+const bcrypt = require("bcrypt");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+
 
 mongoose
   .connect('mongodb://localhost/project-number-2', { useNewUrlParser: true })
@@ -33,6 +37,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use("/index2", function (request, response, next) {
+  if (request.session.currentUser) {
+    // if we do have the currentUser object, go
+    // to the /secret route, i.e. the next route
+    next()
+  } else {
+    response.send(`
+      <h1>You need to login, friend</h1>
+    `)
+  }
+})
 
 // Express View engine setup
 
@@ -87,4 +102,11 @@ const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
 
+
+
+
+
+
+
 module.exports = app;
+
