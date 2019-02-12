@@ -1,44 +1,66 @@
-<form action="/add-diary" method="post">
-  <label for="category">Category</label>
-  <input type="text" name="category" id="category">
-  <label for="timeSpent">Time spent</label>
-  <input type="Number" name="timeSpent" id="timeSpent">
-  <label for="difficulty">Difficulty</label>
-  <select name="difficulty" id="difficulty">
-    <option value="1">Easy</option>
-    <option value="2">Medium</option>
-    <option value="3">Challenging</option>
-    <option value="4">Hard</option>
-    <option value="5">Very hard</option>
-  </select>
-  <label for="sourceType">Source type</label>
-  <select name="sourceType" id="sourceType">
-    <option value="book">book</option>
-    <option value="video">video</option>
-    <option value="article">article</option>
-    <option value="course">course</option>
-    <option value="other">other</option>
-  </select>
-  <label for="sourceTitle">Source title</label>
-  <input type="text" name="sourceTitle" id="sourceTitle">
-  <label for="sourceLink">Source link</label>
-  <input type="text" name="sourceLink" id="sourceLink">
-  <br>
-  <br>
-  <br>
-  <div id="editor">
-    <p>Hello World!</p>
-    <p>Some initial <strong>bold</strong> text</p>
-    <p><br></p>
-  </div>
-  <div>
-    <input type="hidden" name="description">
-    <button type="submit">add Diary</button>
+<div class="container">
 
-  </div>
+  <form action="/add-diary" method="post">
+    <div class="row">
+      <div class="col-sm form-group">
+        <label for="category">Category</label>
+        <input type="text" name="category" id="category" class="form-control">
+      </div>
+      <div class="col-sm form-group">
+        <label for="timeSpent">Time spent</label>
+        <input type="Number" name="timeSpent" id="timeSpent" class="form-control">
+      </div>
+      <div class="col-sm form-group">
+        <label for="difficulty">Difficulty</label>
+        <select name="difficulty" id="difficulty" class="form-control form-control">
+          <option value="1">Easy</option>
+          <option value="2">Medium</option>
+          <option value="3">Challenging</option>
+          <option value="4">Hard</option>
+          <option value="5">Very hard</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm form-group">
+        <label for="sourceType">Source type</label>
+        <select name="sourceType" id="sourceType" class="form-control form-control">
+          <option value="book">book</option>
+          <option value="video">video</option>
+          <option value="article">article</option>
+          <option value="course">course</option>
+          <option value="other">other</option>
+        </select>
+      </div>
+      <div class="col-sm form-group">
+        <label for="sourceTitle">Source title</label>
+        <input type="text" name="sourceTitle" id="sourceTitle" class="form-control">
+      </div>
+      <div class="col-sm form-group">
+        <label for="sourceLink">Source link</label>
+        <input type="text" name="sourceLink" id="sourceLink" class="form-control">
+      </div>
+
+    </div>
+
+    <br>
+
+    <div id="editor">
+      <p>Hello World!</p>
+      <p>Some initial <strong>bold</strong> text</p>
+      <p><br></p>
+    </div>
+    <div>
+      <input type="hidden" name="description">
+      <button type="submit">add Diary</button>
+
+    </div>
 
 
-</form>
+  </form>
+</div>
+
 
 {{#each diaries}}
 <div>
