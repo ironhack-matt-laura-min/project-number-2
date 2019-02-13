@@ -17,7 +17,8 @@ router.post('/add-diary', (req, res, next) => {
     difficulty,
     sourceType,
     sourceTitle,
-    sourceLink
+    sourceLink,
+    diaryTitle
   } = req.body;
 
   console.log(req.body);
@@ -30,7 +31,8 @@ router.post('/add-diary', (req, res, next) => {
     difficulty,
     sourceType,
     sourceTitle,
-    sourceLink
+    sourceLink,
+    diaryTitle
   });
 
   newDiary
@@ -46,10 +48,10 @@ router.get('/about', (req, res, next) => {
 });
 
 router.get('/home', (req, res, next) => {
-  Diary.find().then(diaries => {
-    console.log(diaries);
-    res.render('index2', { diaries });
-  });
+  Diary.find({ _owner: req.user }).populate('_owner').lean()
+    .then(diaries => {
+      res.render('index2', { diaries });
+    });
 });
 
 router.get('/home/profile', (req, res, next) => {
