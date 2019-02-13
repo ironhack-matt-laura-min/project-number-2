@@ -1,21 +1,36 @@
-<div class="d-flex align-items-center justify-content-center" id="signup">
-  <div>
-    <form action="/auth/signup" method="POST" id="form-container">
-      <h1>Sign Up</h1>
-      <div class="form-group">
-        <input type="text" class="form-control" id="inputEmail4" placeholder="Username" name="username">
-      </div>
-
-
-      <div class="form-group">
-        <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
-      </div>
-      <button type="submit" class="btn btn-primary p">Sign up</button>
-      <br></br>
-      {{#if message }}
-      <div class="error-message">{{ message }}</div>
-      {{/if}}
-    </form>
-  </div>
-
+<div class="d-flex justify-content-center">
+  <img src="../images/logo2.png" />
 </div>
+<div class="d-flex justify-content-center" id="login">
+  <form action="/auth/login" method="POST" id="form-container">
+    <div class="d-flex justify-content-center codestory">
+      {{!-- <h1>Code Story</h1> --}}
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" id="inputEmail4" placeholder="Username" name="username">
+    </div>
+
+    <div class="form-group">
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
+    </div>
+    <div class="checkbox mb-2 d-flex justify-content-center">
+      {{!-- <label><input type="checkbox" value="remember-me"> Remember me</label> --}}
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="submit" id="loginButton" class="btn-block btn-lg btn-color">Sign Up</button>
+    </div>
+    <br>
+    <div class="d-flex justify-content-center">
+      <p class="account-message">
+        By creating an account, you are agreeing <br> to our <a href="/auth/signup" class="pink">Terms of Service</a>
+        and
+        <a href="/auth/signup" class="pink">Privacy Policy</a>.
+      </p>
+    </div>
+  </form>
+</div>
+
+{{#if message }}
+<div class="error-message">{{ message }}</div>
+{{/if}}

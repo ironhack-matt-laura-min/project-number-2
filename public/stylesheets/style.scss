@@ -5,16 +5,16 @@ body {
 
 // 'Lucida Grande', Helvetica, Arial, sans-serif
 .bg-color {
-  background-color: #262831;
+  background-color: #262626;
 }
 
-// .navbar {
-//   margin: -50px;
-// }
+.navbar {
+  margin: -50px;
+}
 
-// .bg-font {
-//   color: #fff;
-// }
+.bg-font {
+  color: #fff;
+}
 
 a {
   color: #57c6c8;
@@ -22,6 +22,10 @@ a {
 
 .p {
   color: #57c6c8;
+}
+
+.pink {
+  color: #f66c67;
 }
 
 .btn-color {
@@ -43,19 +47,22 @@ textarea {
 }
 
 #loginButton {
-  border-color: black;
+  border-color: #57c6c8;
+  color: #fff;
 }
 
-.diary-post-div{
-  background-color: pink;
+.diary-post-div {
+  background-color: black;
   margin-top: 30px;
   border-radius: 20px;
   padding: 15px;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 body {
-  font: 16px Arial; 
+  font: 16px Arial;
 }
 .autocomplete {
   /*the container must be positioned relative:*/
@@ -68,12 +75,12 @@ input {
   padding: 10px;
   font-size: 16px;
 }
-input[type=text] {
+input[type='text'] {
   background-color: #f1f1f1;
   width: 100%;
 }
-input[type=submit] {
-  background-color: DodgerBlue;
+input[type='submit'] {
+  background-color: #57c6c8;
   color: #fff;
 }
 .autocomplete-items {
@@ -91,18 +98,17 @@ input[type=submit] {
 .autocomplete-items div {
   padding: 5px;
   cursor: pointer;
-  background-color: white; 
-  border-bottom: 1px solid #d4d4d4; 
+  background-color: white;
+  border-bottom: 1px solid #d4d4d4;
   border-radius: 5px;
   color: black;
-  
 }
 .autocomplete-items div:hover {
   /*when hovering an item:*/
-  background-color: #e9e9e9; 
+  background-color: #e9e9e9;
 }
 .autocomplete-active {
   /*when navigating through the items using the arrow keys:*/
-  background-color: DodgerBlue !important; 
-  color: #ffffff; 
+  background-color: #57c6c8 !important;
+  color: #ffffff;
 }

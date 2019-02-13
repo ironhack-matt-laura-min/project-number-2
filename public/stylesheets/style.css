@@ -3,13 +3,22 @@ body {
   font: 14px 'Sailec Light', sans-serif; }
 
 .bg-color {
-  background-color: #262831; }
+  background-color: #262626; }
+
+.navbar {
+  margin: -50px; }
+
+.bg-font {
+  color: #fff; }
 
 a {
   color: #57c6c8; }
 
 .p {
   color: #57c6c8; }
+
+.pink {
+  color: #f66c67; }
 
 .btn-color {
   background-color: #57c6c8; }
@@ -26,10 +35,11 @@ textarea {
   height: 80vh; }
 
 #loginButton {
-  border-color: black; }
+  border-color: #57c6c8;
+  color: #fff; }
 
 .diary-post-div {
-  background-color: pink;
+  background-color: black;
   margin-top: 30px;
   border-radius: 20px;
   padding: 15px; }
@@ -51,12 +61,12 @@ input {
   padding: 10px;
   font-size: 16px; }
 
-input[type=text] {
+input[type='text'] {
   background-color: #f1f1f1;
   width: 100%; }
 
-input[type=submit] {
-  background-color: DodgerBlue;
+input[type='submit'] {
+  background-color: #57c6c8;
   color: #fff; }
 
 .autocomplete-items {
@@ -85,7 +95,7 @@ input[type=submit] {
 
 .autocomplete-active {
   /*when navigating through the items using the arrow keys:*/
-  background-color: DodgerBlue !important;
+  background-color: #57c6c8 !important;
   color: #ffffff; }
 
 /*# sourceMappingURL=style.css.map */
