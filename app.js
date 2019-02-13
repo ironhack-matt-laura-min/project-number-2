@@ -70,7 +70,6 @@ hbs.registerHelper('difficiltyNumber2String', (value) => {
   }
 });
 
-
 // default value for title local
 app.locals.title = 'Project2';
 
