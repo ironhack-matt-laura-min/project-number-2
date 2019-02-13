@@ -6,12 +6,13 @@ const diarySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+  diaryTitle: { type: String, required: true },
   category: { type: String, required: true },
   description: String,
   timeSpent: Number,
   difficulty: { type: Number, max: 5, min: 1 },
   sourceType: { type: String, enum: ["video", "book", "article", "course", "other"] },
-  sourceTitle: { type: String, required: true },
+  sourceTitle: { type: String },
   sourceLink: { type: String }
 }, {
     timestamps: {

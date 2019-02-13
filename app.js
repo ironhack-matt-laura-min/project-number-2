@@ -19,7 +19,7 @@ const LocalStrategy = require("passport-local").Strategy;
 
 
 mongoose
-  .connect('mongodb://localhost/project-number-2', { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -74,6 +74,16 @@ hbs.registerHelper('ifUndefined', (value, options) => {
   }
 });
 
+hbs.registerHelper('difficiltyNumber2String', (value) => {
+  switch (value) {
+    case 1: return 'Easy'
+    case 2: return 'Medium'
+    case 3: return 'Hard'
+    case 4: return 'Crazy hard'
+    case 5: return 'Crazy crazy hard'
+    default: return 'Unknown'
+  }
+});
 
 // default value for title local
 app.locals.title = 'Project2';
@@ -101,6 +111,7 @@ app.use('/', index);
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
+<<<<<<< HEAD
 
 
 
@@ -108,5 +119,9 @@ app.use('/auth', authRoutes);
 
 
 
+=======
+const apiRoutes = require('./routes/api');
+app.use('/api', apiRoutes)
+>>>>>>> 4bc07805c7b4c5eeadf1724be689a798ec7f1d5e
 module.exports = app;
 

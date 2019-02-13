@@ -1,17 +1,126 @@
-
-
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ 
+  font: 14px 'Sailec Light', sans-serif;
+}
+
+// 'Lucida Grande', Helvetica, Arial, sans-serif
+.bg-color {
+  background-color: #262626;
+}
+
+
+
+.bg-font {
+  color: #fff;
 }
 
 a {
-  color: #00B7FF;
+  color: #57c6c8;
+}
+
+.p {
+  color: #57c6c8;
+}
+
+.pink {
+  color: #f66c67;
+}
+
+.btn-color {
+  background-color: #57c6c8;
 }
 
 textarea {
-    resize: none;
-    overflow: hidden;
-    min-height: 253px;
-    
+  resize: none;
+  overflow: hidden;
+  min-height: 253px;
+}
+
+#login {
+  height: 80vh;
+}
+
+#signup {
+  height: 80vh;
+}
+
+#loginButton {
+  border-color: #57c6c8;
+  color: #fff;
+}
+
+.diary-post-div {
+  background-color: lightpink;
+  margin-top: 30px;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font: 16px Arial;
+}
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type='text'] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type='submit'] {
+  background-color: #57c6c8;
+  color: #fff;
+}
+.autocomplete-items {
+  position: absolute;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+  color: black;
+}
+.autocomplete-items div {
+  padding: 5px;
+  cursor: pointer;
+  background-color: white;
+  border-bottom: 1px solid #d4d4d4;
+  border-radius: 5px;
+  color: black;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: #57c6c8 !important;
+  color: #ffffff;
+}
+
+#myChart {
+  max-width: 500px !important;
+  max-height: 500px !important;
+}
+
+#myDoughnut {
+  max-width: 500px !important;
+  max-height: 500px !important;
+}
+
+.card {
+  color: black;
 }
