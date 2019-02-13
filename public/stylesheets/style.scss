@@ -52,7 +52,7 @@ textarea {
 }
 
 .diary-post-div {
-  background-color: black;
+  background-color: lightpink;
   margin-top: 30px;
   border-radius: 20px;
   padding: 15px;
@@ -111,4 +111,14 @@ input[type='submit'] {
   /*when navigating through the items using the arrow keys:*/
   background-color: #57c6c8 !important;
   color: #ffffff;
+}
+
+#myChart {
+  max-width: 500px !important;
+  max-height: 500px !important;
+}
+
+#myDoughnut {
+  max-width: 500px !important;
+  max-height: 500px !important;
 }

@@ -39,7 +39,11 @@ textarea {
   color: #fff; }
 
 .diary-post-div {
+<<<<<<< HEAD
   background-color: black;
+=======
+  background-color: lightpink;
+>>>>>>> f1d2ac2846aefbca6ff7725e1e8150693bee073a
   margin-top: 30px;
   border-radius: 20px;
   padding: 15px; }
@@ -97,5 +101,13 @@ input[type='submit'] {
   /*when navigating through the items using the arrow keys:*/
   background-color: #57c6c8 !important;
   color: #ffffff; }
+
+#myChart {
+  max-width: 500px !important;
+  max-height: 500px !important; }
+
+#myDoughnut {
+  max-width: 500px !important;
+  max-height: 500px !important; }
 
 /*# sourceMappingURL=style.css.map */

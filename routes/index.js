@@ -1,6 +1,7 @@
 const express = require('express');
 const Diary = require('../models/Diary');
 const router = express.Router();
+const { checkConnected } = require('../configs/middlewares');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -38,7 +39,7 @@ router.post('/add-diary', (req, res, next) => {
   newDiary
     .save()
     .then(() => {
-      res.redirect('/home');
+      res.redirect('/new-story');
     })
     .catch(err => next(err));
 });
@@ -47,15 +48,16 @@ router.get('/about', (req, res, next) => {
   res.render('about');
 });
 
-router.get('/home', (req, res, next) => {
+router.get('/new-story', checkConnected, (req, res, next) => {
   Diary.find({ _owner: req.user }).populate('_owner').lean()
     .then(diaries => {
       res.render('index2', { diaries });
     });
 });
 
-router.get('/home/profile', (req, res, next) => {
-  res.render('Profile');
+router.get('/profile', (req, res, next) => {
+  const user = req.user
+  res.render('Profile', { user });
 });
 
 module.exports = router;

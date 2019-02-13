@@ -1,1 +1,107 @@
-<h1>My profile</h1>
+<h1>Username : {{user.username}}</h1>
+<h1>Email : {{user.email}}</h1>
+
+<canvas id="myDoughnut"></canvas>
+<canvas id="myChart"></canvas>
+
+<script>
+
+  const diaryInfo = axios.create({
+    baseURL: 'http://localhost:3000/api/diaries',
+  });
+
+  diaryInfo.get()
+    .then(response => {
+      printTheDoughnut(response.data)
+      printTheChart(response.data)
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+  function hello() {
+    console.log('hi')
+  }
+
+  const printTheDoughnut = (diariesData => {
+    let newDiariesData = Object.values(diariesData.reduce(function (obj, entry) {
+      if (!(entry.category in obj)) {
+        obj[entry.category] = {
+          category: entry.category,
+          timeSpent: entry.timeSpent
+        };
+      }
+      obj[entry.category].timeSpent += entry.timeSpent;
+
+      return obj;
+    }, {}));
+
+    const diaryTitle = newDiariesData.map(diary => diary.category);
+    const diaryTime = newDiariesData.map(diary => Number((diary.timeSpent / 60).toFixed(2)));
+
+
+    const ctx = document.getElementById('myDoughnut').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'doughnut',
+
+      options: {
+        onClick: hello
+
+
+      },
+      data: {
+        labels: diaryTitle,
+        datasets: [{
+          label: "Time spent",
+          backgroundColor: ['#7FFF00', '#32CD32', '#98FB98', '#00FA9A', '#3CB371', '#2E8B57', '#4682B4'],
+          borderColor: 'black',
+          data: diaryTime,
+        }]
+      }
+    });
+  });
+
+  const printTheChart = (diariesData => {
+    let newDiariesData = Object.values(diariesData.reduce(function (obj, entry) {
+      if (!(entry.sourceType in obj)) {
+        obj[entry.sourceType] = {
+          sourceType: entry.sourceType,
+          timeUsed: 1
+        };
+      }
+      obj[entry.sourceType].timeUsed += 1;
+
+      return obj;
+    }, {}));
+
+    console.log(newDiariesData)
+
+    const diaryTitle = newDiariesData.map(diary => diary.sourceType);
+    const diaryTime = newDiariesData.map(diary => diary.timeUsed);
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      responsive: true,
+      data: {
+        labels: diaryTitle,
+        datasets: [{
+          label: "Time spent",
+          backgroundColor: ['#FF7F50', '#FF4500', '#FF8C00', '#FFFF00', '#FFD700'],
+          borderColor: 'black',
+          data: diaryTime,
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              suggestedMin: 0,
+
+            }
+          }]
+        }
+      }
+    });
+  });
+
+</script>
