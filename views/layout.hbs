@@ -10,13 +10,15 @@
 
 </head>
 
-<body>
 
+
+<body>
   <nav>
     <a href="/">Home</a>
 
     {{#if isConnected}}
-    <a href="/home/profile">Profile page</a>
+
+    <a href="/home/profile/">Profile page</a>
     <a href="/auth/logout">Log out</a>
     {{else}}
     <a href="/auth/signup">Sign up</a>
@@ -26,8 +28,8 @@
   </nav>
 
   {{{body}}}
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="/javascripts/script.js"></script>
 </body>
 

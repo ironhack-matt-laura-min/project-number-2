@@ -5,6 +5,7 @@ const passport = require("passport");
 const ensureLogin = require("connect-ensure-login");
 const { checkConnected } = require('../configs/middlewares');
 const User = require("../models/User")
+const app = express()
 
 
 /* GET home page */
@@ -12,42 +13,7 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-<<<<<<< HEAD
 /* GET Abous us page */
-=======
-router.post('/add-diary', (req, res, next) => {
-  const user = req.user
-
-  const {
-    category,
-    description,
-    timeSpent,
-    difficulty,
-    sourceType,
-    sourceTitle,
-    sourceLink
-  } = req.body;
-
-  console.log(req.body)
-
-  const newDiary = new Diary({
-    _owner: user,
-    category,
-    description,
-    timeSpent,
-    difficulty,
-    sourceType,
-    sourceTitle,
-    sourceLink
-  })
-
-  newDiary.save()
-    .then(() => {
-      res.redirect('/home');
-    })
-    .catch(err => next(err));
-});
->>>>>>> 9bc17d9e97f336c2a9bb7aaeb84855d7f9d3cbbb
 
 router.get('/about', (req, res, next) => {
   res.render('about');
@@ -61,9 +27,29 @@ router.get("/home", checkConnected, (req, res, next) => {
 /* GET user profile page */
 
 
-router.get("/home/profile", checkConnected, (req, res, next) => {
-  res.render('Profile')
+// we are working here
+router.get("/home/profile/:Id", checkConnected, (req, res, next) => {
+  User.findById(req.params.Id)
+    .then((user) => {
+      res.render('Profile', { user })
+    })
 })
+router.get("/home/profile/edit/:Id", checkConnected, (req, res, next) => {
+  User.findById(req.params.Id)
+    .then(user => {
+      res.render('edit', { user })
+    })
+})
+
+/* router.post('home/profile/:Id/edit', (req, res, next) => {
+  const { email } = req.body
+  User.findByIdAndUpdate(req.params.Id, { email })
+    .then(() => {
+      res.redirect("/home/profile")
+    })
+
+}) */
+
 
 
 module.exports = router;
