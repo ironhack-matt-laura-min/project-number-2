@@ -1,12 +1,11 @@
 body {
-  padding: 50px;
   font: 14px 'Sailec Light', sans-serif; }
+
+.titlefont {
+  font-family: 'Lobster', cursive; }
 
 .bg-color {
   background-color: #262626; }
-
-.navbar {
-  margin: -50px; }
 
 .bg-font {
   color: #fff; }
@@ -19,6 +18,9 @@ a {
 
 .pink {
   color: #f66c67; }
+
+.blue {
+  color: #57c6c8; }
 
 .btn-color {
   background-color: #57c6c8; }
@@ -39,11 +41,7 @@ textarea {
   color: #fff; }
 
 .diary-post-div {
-<<<<<<< HEAD
-  background-color: black;
-=======
   background-color: lightpink;
->>>>>>> f1d2ac2846aefbca6ff7725e1e8150693bee073a
   margin-top: 30px;
   border-radius: 20px;
   padding: 15px; }

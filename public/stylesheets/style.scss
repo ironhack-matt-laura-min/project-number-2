@@ -1,15 +1,14 @@
 body {
-  padding: 50px;
   font: 14px 'Sailec Light', sans-serif;
+}
+
+.titlefont {
+  font-family: 'Lobster', cursive;
 }
 
 // 'Lucida Grande', Helvetica, Arial, sans-serif
 .bg-color {
   background-color: #262626;
-}
-
-.navbar {
-  margin: -50px;
 }
 
 .bg-font {
@@ -26,6 +25,10 @@ a {
 
 .pink {
   color: #f66c67;
+}
+
+.blue {
+  color: #57c6c8;
 }
 
 .btn-color {
