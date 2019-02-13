@@ -1,12 +1,8 @@
 body {
-  padding: 50px;
   font: 14px 'Sailec Light', sans-serif; }
 
 .bg-color {
   background-color: #262626; }
-
-.navbar {
-  margin: -50px; }
 
 .bg-font {
   color: #fff; }
@@ -39,11 +35,7 @@ textarea {
   color: #fff; }
 
 .diary-post-div {
-<<<<<<< HEAD
-  background-color: black;
-=======
   background-color: lightpink;
->>>>>>> f1d2ac2846aefbca6ff7725e1e8150693bee073a
   margin-top: 30px;
   border-radius: 20px;
   padding: 15px; }
@@ -109,5 +101,8 @@ input[type='submit'] {
 #myDoughnut {
   max-width: 500px !important;
   max-height: 500px !important; }
+
+.card {
+  color: black; }
 
 /*# sourceMappingURL=style.css.map */

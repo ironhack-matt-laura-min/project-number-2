@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+ 
   font: 14px 'Sailec Light', sans-serif;
 }
 
@@ -8,9 +8,7 @@ body {
   background-color: #262626;
 }
 
-.navbar {
-  margin: -50px;
-}
+
 
 .bg-font {
   color: #fff;
@@ -121,4 +119,8 @@ input[type='submit'] {
 #myDoughnut {
   max-width: 500px !important;
   max-height: 500px !important;
+}
+
+.card {
+  color: black;
 }

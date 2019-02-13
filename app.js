@@ -15,7 +15,7 @@ const flash = require("connect-flash");
 
 
 mongoose
-  .connect('mongodb://localhost/project-number-2', { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -56,6 +56,17 @@ hbs.registerHelper('ifUndefined', (value, options) => {
     return options.inverse(this);
   } else {
     return options.fn(this);
+  }
+});
+
+hbs.registerHelper('difficiltyNumber2String', (value) => {
+  switch (value) {
+    case 1: return 'Easy'
+    case 2: return 'Medium'
+    case 3: return 'Hard'
+    case 4: return 'Crazy hard'
+    case 5: return 'Crazy crazy hard'
+    default: return 'Unknown'
   }
 });
 
