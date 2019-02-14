@@ -11,15 +11,16 @@ body {
   background-color: #262626;
 }
 
+.dark {
+  background-color: black;
+}
+
 .bg-font {
   color: #fff;
 }
 
-.btn-color,
-.p,
 .blue {
   color: #57c6c8;
-  background-color: #57c6c8;
 }
 
 .pink {
@@ -59,10 +60,17 @@ textarea {
 #loginButton {
   border-color: #57c6c8;
   color: #fff;
+  background-color: #57c6c8;
+}
+
+#signupButton {
+  border-color: #57c6c8;
+  color: #fff;
+  background-color: #57c6c8;
 }
 
 .diary-post-div {
-  background-color: lightpink;
+  background-color: #ccc;
   margin-top: 30px;
   border-radius: 20px;
   padding: 15px;
@@ -123,14 +131,18 @@ input[type='submit'] {
   color: #ffffff;
 }
 
-#myChart {
-  max-width: 500px !important;
-  max-height: 500px !important;
+#myDoughnut {
+  max-width: 40vw !important;
+  // max-height: 30vw !important;
 }
 
-#myDoughnut {
-  max-width: 500px !important;
-  max-height: 500px !important;
+#myChart {
+  max-width: 45vw !important;
+  max-height: 30vw !important;
+}
+#myDifficulty {
+  max-width: 45vw !important;
+  max-height: 30vw !important;
 }
 
 .card {
@@ -148,3 +160,17 @@ input[type='submit'] {
   margin: 50px 30px 50px;
   border-radius: 10px;
 }
+
+.profile-pic {
+  width: 20vw;
+  border-radius: 50%;
+}
+
+.photo-input {
+  width: 20vw;
+  background-color: #6c757d;
+}
+
+// extra colors
+// #FF7F50', '#FF4500', '#FF8C00', '#FFFF00', '#FFD700
+// #7FFF00 #57c6c8 #4682B4 #32CD32 #98FB98 #00FA9A #3CB371 #2E8B57

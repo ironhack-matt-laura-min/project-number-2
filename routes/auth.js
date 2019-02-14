@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
+const uploadCloud = require('../configs/cloudinary.js');
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -26,6 +27,7 @@ router.get("/signup", (req, res, next) => {
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
+
   if (username === "" || password === "") {
     res.render("auth/signup", { message: "Indicate username and password" });
     return;
@@ -40,9 +42,11 @@ router.post("/signup", (req, res, next) => {
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
+
     const newUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+
     });
 
     newUser.save()

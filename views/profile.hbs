@@ -1,8 +1,46 @@
-<h1>Username : {{user.username}}</h1>
-<h1>Email : {{user.email}}</h1>
+<div class="d-flex justify-content-center flex-column align-items-center ">
 
-<canvas id="myDoughnut"></canvas>
-<canvas id="myChart"></canvas>
+  <div>
+    <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3">
+
+  </div>
+  <h1>{{user.username}}</h1>
+  <h1>Email : {{user.email}}</h1>
+
+  <a href="/edit-profile/{{user._id}}">edit profile</a>
+</div>
+
+<br>
+
+<div class="bg-color">
+  <div class="d-flex justify-content-center">
+    <canvas id="myDoughnut"></canvas>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <canvas id="myChart" class="pr-3"></canvas>
+    <canvas id="myDifficulty" class="pl-3"></canvas>
+  </div>
+</div>
+
+<div>
+
+  {{#each diaries}}
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{this.diaryTitle}}</h5>
+      <p class="card-text">category: {{this.category}}</p>
+      <p class="card-text">time spent: {{this.timeSpent}} minutes</p>
+      <p class="card-text">
+        difficulty: {{difficiltyNumber2String this.difficulty}}
+      </p>
+
+      <a href="#" class="btn btn-primary">Read my diary</a>
+    </div>
+  </div>
+  {{/each}}
+
+</div>
 
 <script>
 
@@ -14,6 +52,7 @@
     .then(response => {
       printTheDoughnut(response.data)
       printTheChart(response.data)
+      printTheDifficulty(response.data)
     })
     .catch(error => {
       console.log(error);
@@ -21,6 +60,31 @@
 
   function hello() {
     console.log('hi')
+  }
+
+  function difficultyToString(difficulty) {
+    let result = ''
+
+    switch (difficulty) {
+      case 1:
+        result = 'easy';
+        break;
+      case 2:
+        result = 'medium'
+        break;
+      case 3:
+        result = 'challenging'
+        break;
+      case 4:
+        result = 'hard'
+        break;
+      case 5:
+        result = 'very hard'
+        break;
+
+
+    }
+    return result
   }
 
   const printTheDoughnut = (diariesData => {
@@ -53,8 +117,8 @@
         labels: diaryTitle,
         datasets: [{
           label: "Time spent",
-          backgroundColor: ['#7FFF00', '#32CD32', '#98FB98', '#00FA9A', '#3CB371', '#2E8B57', '#4682B4'],
-          borderColor: 'black',
+          backgroundColor: ['#57C6C8', '#57AAC8', '#578EC8', '#5771C8', '#5957C8', '#7557C8', '#7FFF00'],
+
           data: diaryTime,
         }]
       }
@@ -85,8 +149,55 @@
       data: {
         labels: diaryTitle,
         datasets: [{
-          label: "Time spent",
-          backgroundColor: ['#FF7F50', '#FF4500', '#FF8C00', '#FFFF00', '#FFD700'],
+          label: "Source Type",
+          backgroundColor: ['#F8514C', '#F87C4C', '#F8A74C', '#F8D24C', '#FFD700'],
+          borderColor: 'black',
+          data: diaryTime,
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              suggestedMin: 0,
+
+            }
+          }]
+        }
+      }
+    });
+  });
+
+  const printTheDifficulty = (diariesData => {
+    let newDiariesData = Object.values(diariesData.reduce(function (obj, entry) {
+      if (!(entry.difficulty in obj)) {
+        obj[entry.difficulty] = {
+          difficulty: entry.difficulty,
+          timeUsed: 1
+        };
+      }
+      obj[entry.difficulty].timeUsed += 1;
+
+      return obj;
+    }, {}));
+
+    console.log(newDiariesData)
+
+    const diaryTitle = newDiariesData.map(diary => { return difficultyToString(diary.difficulty) });
+
+    console.log(diaryTitle)
+
+    const diaryTime = newDiariesData.map(diary => diary.timeUsed);
+    console.log('TCL: diaryTime', diaryTime)
+    const ctx = document.getElementById('myDifficulty').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      responsive: true,
+      data: {
+        labels: diaryTitle,
+        datasets: [{
+          label: "Difficulty",
+          backgroundColor: ['#F8514C', '#F87C4C', '#F8A74C', '#F8D24C', '#FFD700'],
           borderColor: 'black',
           data: diaryTime,
         }]

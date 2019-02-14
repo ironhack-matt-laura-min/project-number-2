@@ -7,14 +7,14 @@ body {
 .bg-color {
   background-color: #262626; }
 
+.dark {
+  background-color: black; }
+
 .bg-font {
   color: #fff; }
 
-.btn-color,
-.p,
 .blue {
-  color: #57c6c8;
-  background-color: #57c6c8; }
+  color: #57c6c8; }
 
 .pink {
   color: #f8514c; }
@@ -45,10 +45,16 @@ textarea {
 
 #loginButton {
   border-color: #57c6c8;
-  color: #fff; }
+  color: #fff;
+  background-color: #57c6c8; }
+
+#signupButton {
+  border-color: #57c6c8;
+  color: #fff;
+  background-color: #57c6c8; }
 
 .diary-post-div {
-  background-color: lightpink;
+  background-color: black;
   margin-top: 30px;
   border-radius: 20px;
   padding: 15px; }
@@ -107,13 +113,16 @@ input[type='submit'] {
   background-color: #57c6c8 !important;
   color: #ffffff; }
 
-#myChart {
-  max-width: 500px !important;
-  max-height: 500px !important; }
-
 #myDoughnut {
-  max-width: 500px !important;
-  max-height: 500px !important; }
+  max-width: 40vw !important; }
+
+#myChart {
+  max-width: 45vw !important;
+  max-height: 30vw !important; }
+
+#myDifficulty {
+  max-width: 45vw !important;
+  max-height: 30vw !important; }
 
 .card {
   color: black; }
@@ -127,5 +136,13 @@ input[type='submit'] {
   padding: 10px;
   margin: 50px 30px 50px;
   border-radius: 10px; }
+
+.profile-pic {
+  width: 20vw;
+  border-radius: 50%; }
+
+.photo-input {
+  width: 20vw;
+  background-color: #6c757d; }
 
 /*# sourceMappingURL=style.css.map */
