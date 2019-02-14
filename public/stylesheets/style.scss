@@ -17,7 +17,7 @@ body {
 
 .sectionp p {
   font-family: 'Varela Round', sans-serif;
-  font-size: 20px;
+  font-size: 30px;
   max-width: 500px;
 }
 .section-2 li {
@@ -113,6 +113,17 @@ strong {
 
 .section-3 {
   height: 650px;
+}
+
+.section-3 h2 {
+  font-size: 50px;
+  font-family: 'Lobster', cursive;
+}
+
+.section-3 li {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 30px;
+  max-width: 500px;
 }
 
 textarea {
