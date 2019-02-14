@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center flex-column align-items-center bg-secondary">
+<div class="d-flex justify-content-center flex-column align-items-center ">
 
   <div>
     <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3 rounded-circle">
@@ -12,10 +12,9 @@
   <a href="/edit-profile/{{user._id}}">edit profile</a>
 </div>
 
+<br>
 
-
-
-<div class="bg-white">
+<div class="bg-color">
   <div class="d-flex justify-content-center">
     <canvas id="myDoughnut"></canvas>
   </div>
@@ -120,7 +119,7 @@
         labels: diaryTitle,
         datasets: [{
           label: "Time spent",
-          backgroundColor: ['#7FFF00', '#32CD32', '#98FB98', '#00FA9A', '#3CB371', '#2E8B57', '#4682B4'],
+          backgroundColor: ['#57C6C8', '#57AAC8', '#578EC8', '#5771C8', '#5957C8', '#7557C8', '#7FFF00'],
 
           data: diaryTime,
         }]
@@ -152,8 +151,8 @@
       data: {
         labels: diaryTitle,
         datasets: [{
-          label: "Time spent",
-          backgroundColor: ['#FF7F50', '#FF4500', '#FF8C00', '#FFFF00', '#FFD700'],
+          label: "Source Type",
+          backgroundColor: ['#F8514C', '#F87C4C', '#F8A74C', '#F8D24C', '#FFD700'],
           borderColor: 'black',
           data: diaryTime,
         }]
@@ -199,8 +198,8 @@
       data: {
         labels: diaryTitle,
         datasets: [{
-          label: "Time spent",
-          backgroundColor: ['#FF7F50', '#FF4500', '#FF8C00', '#FFFF00', '#FFD700'],
+          label: "Difficulty",
+          backgroundColor: ['#F8514C', '#F87C4C', '#F8A74C', '#F8D24C', '#FFD700'],
           borderColor: 'black',
           data: diaryTime,
         }]

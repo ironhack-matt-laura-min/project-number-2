@@ -1,6 +1,9 @@
 body {
- 
   font: 14px 'Sailec Light', sans-serif;
+}
+
+.titlefont {
+  font-family: 'Lobster', cursive;
 }
 
 // 'Lucida Grande', Helvetica, Arial, sans-serif
@@ -8,26 +11,36 @@ body {
   background-color: #262626;
 }
 
-
+.dark {
+  background-color: black;
+}
 
 .bg-font {
   color: #fff;
 }
 
-a {
-  color: #57c6c8;
-}
-
-.p {
+.blue {
   color: #57c6c8;
 }
 
 .pink {
-  color: #f66c67;
+  color: #f8514c;
 }
 
-.btn-color {
-  background-color: #57c6c8;
+.section {
+  margin-top: -90px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  height: 950px;
+}
+
+.section-2 {
+  height: 650px;
+  background-color: #ccc;
+}
+
+.section-3 {
+  height: 650px;
 }
 
 textarea {
@@ -47,10 +60,17 @@ textarea {
 #loginButton {
   border-color: #57c6c8;
   color: #fff;
+  background-color: #57c6c8;
+}
+
+#signupButton {
+  border-color: #57c6c8;
+  color: #fff;
+  background-color: #57c6c8;
 }
 
 .diary-post-div {
-  background-color: lightpink;
+  background-color: #ccc;
   margin-top: 30px;
   border-radius: 20px;
   padding: 15px;
@@ -111,7 +131,6 @@ input[type='submit'] {
   color: #ffffff;
 }
 
-
 #myDoughnut {
   max-width: 40vw !important;
   // max-height: 30vw !important;
@@ -130,6 +149,18 @@ input[type='submit'] {
   color: black;
 }
 
+#frontLogo {
+  padding-bottom: 13vh;
+}
+
+.box {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  margin: 50px 30px 50px;
+  border-radius: 10px;
+}
+
 .profile-pic {
   width: 200px;
   height: 200px;
@@ -141,3 +172,7 @@ input[type='submit'] {
   width: 20vw;
   background-color: #6c757d;
 }
+
+// extra colors
+// #FF7F50', '#FF4500', '#FF8C00', '#FFFF00', '#FFD700
+// #7FFF00 #57c6c8 #4682B4 #32CD32 #98FB98 #00FA9A #3CB371 #2E8B57

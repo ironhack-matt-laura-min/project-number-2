@@ -1,23 +1,36 @@
 body {
   font: 14px 'Sailec Light', sans-serif; }
 
+.titlefont {
+  font-family: 'Lobster', cursive; }
+
 .bg-color {
   background-color: #262626; }
+
+.dark {
+  background-color: black; }
 
 .bg-font {
   color: #fff; }
 
-a {
-  color: #57c6c8; }
-
-.p {
+.blue {
   color: #57c6c8; }
 
 .pink {
-  color: #f66c67; }
+  color: #f8514c; }
 
-.btn-color {
-  background-color: #57c6c8; }
+.section {
+  margin-top: -90px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  height: 950px; }
+
+.section-2 {
+  height: 650px;
+  background-color: #ccc; }
+
+.section-3 {
+  height: 650px; }
 
 textarea {
   resize: none;
@@ -32,10 +45,16 @@ textarea {
 
 #loginButton {
   border-color: #57c6c8;
-  color: #fff; }
+  color: #fff;
+  background-color: #57c6c8; }
+
+#signupButton {
+  border-color: #57c6c8;
+  color: #fff;
+  background-color: #57c6c8; }
 
 .diary-post-div {
-  background-color: lightpink;
+  background-color: black;
   margin-top: 30px;
   border-radius: 20px;
   padding: 15px; }
@@ -107,6 +126,16 @@ input[type='submit'] {
 
 .card {
   color: black; }
+
+#frontLogo {
+  padding-bottom: 13vh; }
+
+.box {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  margin: 50px 30px 50px;
+  border-radius: 10px; }
 
 .profile-pic {
   width: 200px;
