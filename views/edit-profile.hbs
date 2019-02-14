@@ -1,0 +1,13 @@
+<form action="/edit-profile" method="post">
+  <label for="username">Username</label>
+  <input type="text" name="username" value="{{user.username}}">
+  <button type="submit">update profile</button>
+  <label for="email">Email</label>
+  <input type="email" name="email" value="{{user.email}}">
+</form>
+
+<form action="/uploadAvatarImg/{{user._id}}" method="post" enctype="multipart/form-data">
+  <input type="file" name="photo" class="photo-input">
+  <br>
+  <input type="submit" value="SAVE" class="btn">
+</form>

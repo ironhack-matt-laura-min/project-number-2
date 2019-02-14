@@ -4,6 +4,10 @@ body {
 .bg-color {
   background-color: #262626; }
 
+.remove-padding {
+  padding-left: 0px !important;
+  padding-right: 0px !important; }
+
 .bg-font {
   color: #fff; }
 
@@ -111,5 +115,9 @@ input[type='submit'] {
 .profile-pic {
   width: 20vw;
   border-radius: 50%; }
+
+.photo-input {
+  width: 20vw;
+  background-color: #6c757d; }
 
 /*# sourceMappingURL=style.css.map */
