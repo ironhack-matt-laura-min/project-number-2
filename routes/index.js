@@ -86,25 +86,27 @@ router.get('/edit-profile/:Id', (req, res, next) => {
 });
 
 router.post('/edit-profile', (req, res, next) => {
-  let email = req.body.email
-  let aboutMe = req.body.aboutMe
-  User.findByIdAndUpdate(req.user._id, { email: email, aboutMe: aboutMe })
-    .then(() => {
-      res.redirect('/profile')
-    })
-})
+  let email = req.body.email;
+  let aboutMe = req.body.aboutMe;
+  User.findByIdAndUpdate(req.user._id, { email: email, aboutMe: aboutMe }).then(
+    () => {
+      res.redirect('/profile');
+    }
+  );
+});
 
-
-
-router.post("/uploadAvatarImg/:Id", uploadCloud.single('photo'), (req, res, next) => {
-  const id = req.params.Id
-  User.findOneAndUpdate({ _id: id }, { imgPath: req.file.url })
-    .then(() => res.redirect('/profile'))
-    .catch(err => { console.log("error at Post / upload", err) })
-
-})
-
-
+router.post(
+  '/uploadAvatarImg/:Id',
+  uploadCloud.single('photo'),
+  (req, res, next) => {
+    const id = req.params.Id;
+    User.findOneAndUpdate({ _id: id }, { imgPath: req.file.url })
+      .then(() => res.redirect('/profile'))
+      .catch(err => {
+        console.log('error at Post / upload', err);
+      });
+  }
+);
 
 router.post(
   '/uploadAvatarImg/:Id',
