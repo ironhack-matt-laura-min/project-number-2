@@ -34,3 +34,36 @@
 {{#if message }}
 <div class="error-message">{{ message }}</div>
 {{/if}}
+
+
+
+{{!-- <div class="container" style=" margin: 50px;">
+    {{#each diaries}}
+    <div class="row" style=" margin: 20px;">
+      <div class="col remove-padding card">
+        <div class="nav card-header justify-content-between">
+          <div>
+            <p><strong>Category: </strong>{{this.category}}</p>
+          </div>
+          <div>
+            <ul class="nav">
+              <li class="nav-item pr-4">Difficulty:
+                {{difficiltyNumber2String this.difficulty}}</li>
+              <li class="nav-item pr-4">{{this.timeSpent}} min</li>
+              <li class="nav-item pr-4">{{dateOfCreate this.created_at}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="container nav card-body justify-content-between" style="flex-direction: row;">
+          <div class="nav-item">
+            <h5 class="card-title">{{this.diaryTitle}}</h5>
+            <p class="card-text">{{{this.description}}}</p>
+          </div>
+          <div class="nav-item">
+            <a href="#" class="btn btn-primary">Read my diary</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div> --}}
