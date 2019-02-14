@@ -112,4 +112,8 @@ input[type='submit'] {
   width: 20vw;
   border-radius: 50%; }
 
+.photo-input {
+  width: 20vw;
+  background-color: #6c757d; }
+
 /*# sourceMappingURL=style.css.map */

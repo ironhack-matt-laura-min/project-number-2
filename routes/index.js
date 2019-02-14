@@ -60,31 +60,44 @@ router.get('/new-story', checkConnected, (req, res, next) => {
     Diary.find({ _owner: req.user }).sort(sortObj).populate('_owner').lean()
       .then(diaries => {
 
-        res.render('index2', { diaries });
+        res.render('new-story', { diaries });
       });
   }
   else {
     Diary.find({ _owner: req.user }).populate('_owner').lean()
       .then(diaries => {
 
-        res.render('index2', { diaries });
+        res.render('new-story', { diaries });
       });
   }
 
 
 });
 
-// router.get('/sort/:field', (req, res, next) => {
-//   Diary.find({ _owner: req.user }).sort({ timeSpent: 1 }).populate('_owner').lean()
-//     .then(diaries => {
-//       res.render('index2', { diaries });
-//     });
-// })
-
 router.get('/profile', (req, res, next) => {
   const user = req.user
+
   res.render('Profile', { user });
 });
+
+router.get('/edit-profile/:Id', (req, res, next) => {
+  console.log(req.params.Id)
+  User.findById(req.params.Id)
+    .then((user) => {
+      res.render('edit-profile', { user });
+
+    })
+});
+
+router.post('/edit-profile', (req, res, next) => {
+  let email = req.body.email
+  User.findByIdAndUpdate(req.user._id, { email: email })
+    .then(() => {
+      res.redirect('/profile')
+    })
+})
+
+
 
 router.post("/uploadAvatarImg/:Id", uploadCloud.single('photo'), (req, res, next) => {
   const id = req.params.Id

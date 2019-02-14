@@ -1,12 +1,17 @@
-<h1>Username : {{user.username}}</h1>
-<h1>Email : {{user.email}}</h1>
-<img src="{{user.imgPath}}" alt="" class="profile-pic">
+<div class="d-flex justify-content-center flex-column align-items-center bg-secondary">
 
-<form action="/uploadAvatarImg/{{user._id}}" method="post" enctype="multipart/form-data">
-  <input type="file" name="photo">
-  <br>
-  <input type="submit" value="SAVE">
-</form>
+  <div>
+    <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3">
+
+  </div>
+  <h1>{{user.username}}</h1>
+  <h1>Email : {{user.email}}</h1>
+
+  <a href="/edit-profile/{{user._id}}">edit profile</a>
+</div>
+
+
+
 
 <div class="bg-white">
   <div class="d-flex justify-content-center">
