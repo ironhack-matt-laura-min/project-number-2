@@ -1,4 +1,20 @@
 {{#each diaries}}
-<h1>{{this.diaryTitle}}</h1>
-
-{{/each}}
+<div class="container diary-post-div black">
+  <div class="container2">
+    <div class="d-flex bd-highlight">
+      <div class="mr-auto p-2">
+        <h4><strong>
+            <</strong> <span class="pink">{{this.diaryTitle}} </span><strong>
+                >
+              </strong> by <span class="white"> {{this._owner.username}}
+        </h4></span>
+      </div>
+      <div class="p-2 bd-highlight pink titlefont">
+        <h2>{{this.category}}</h2>
+      </div>
+    </div>
+    <div class="mr-auto p-2">
+      <a href="/read-story/{{this._id}}" class="btn btn-blue bg-font">Read Story</a>
+    </div>
+  </div>
+</div> {{/each}}

@@ -85,8 +85,7 @@ router.get('/edit-profile/:Id', (req, res, next) => {
   });
 });
 
-<<<<<<< HEAD
-router.post('/edit-profile', (req, res, next) => {
+router.post('/edit-profile', checkConnected, (req, res, next) => {
   let email = req.body.email;
   let aboutMe = req.body.aboutMe;
   User.findByIdAndUpdate(req.user._id, { email: email, aboutMe: aboutMe }).then(
@@ -95,27 +94,19 @@ router.post('/edit-profile', (req, res, next) => {
     }
   );
 });
-=======
-router.post('/edit-profile', checkConnected, (req, res, next) => {
-  let email = req.body.email
-  let aboutMe = req.body.aboutMe
-  User.findByIdAndUpdate(req.user._id, { email: email, aboutMe: aboutMe })
-    .then(() => {
-      res.redirect('/profile')
-    })
-})
 
-
-
-router.post("/uploadAvatarImg/:Id", uploadCloud.single('photo'), (req, res, next) => {
-  const id = req.params.Id
-  User.findOneAndUpdate({ _id: id }, { imgPath: req.file.url })
-    .then(() => res.redirect('/profile'))
-    .catch(err => { console.log("error at Post / upload", err) })
-
-})
-
->>>>>>> 9c48d034bafacf8696b019c08425967182239a92
+router.post(
+  '/uploadAvatarImg/:Id',
+  uploadCloud.single('photo'),
+  (req, res, next) => {
+    const id = req.params.Id;
+    User.findOneAndUpdate({ _id: id }, { imgPath: req.file.url })
+      .then(() => res.redirect('/profile'))
+      .catch(err => {
+        console.log('error at Post / upload', err);
+      });
+  }
+);
 
 router.post(
   '/uploadAvatarImg/:Id',
@@ -145,9 +136,18 @@ router.post(
 
 router.get('/read-stories', checkConnected, (req, res, next) => {
   Diary.find()
+    .populate('_owner')
     .then(diaries => {
-      res.render('read-stories', { diaries })
-    })
-})
+      res.render('read-stories', { diaries });
+    });
+});
+
+router.get('/read-story/:Id', (req, res, next) => {
+  Diary.findById(req.params.Id)
+    .populate('_owner')
+    .then(diary => {
+      res.render('read-story', { diary });
+    });
+});
 
 module.exports = router;

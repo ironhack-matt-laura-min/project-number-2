@@ -7,6 +7,11 @@ body {
 .bg-color {
   background-color: #262626; }
 
+.container2 {
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px; }
+
 .dark {
   background-color: black; }
 
@@ -15,6 +20,23 @@ body {
 
 .blue {
   color: #57c6c8; }
+
+.btn-pink {
+  background-color: #f8514c; }
+
+.btn-blue {
+  background-color: #57c6c8; }
+
+strong {
+  color: #57c6c8; }
+
+.btn-pink:hover {
+  background-color: #d13b35;
+  color: white; }
+
+.btn-blue:hover {
+  background-color: #47b1b3;
+  color: white; }
 
 .pink {
   color: #f8514c; }
