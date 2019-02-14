@@ -7,6 +7,23 @@ body {
 .bg-color {
   background-color: #262626; }
 
+.container2 {
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px; }
+
+.card-header {
+  padding: 5px !important;
+  font-size: 10px;
+  height: 35px;
+  background-color: #ccc !important;
+  border-top-right-radius: 20px !important;
+  border-top-left-radius: 20px !important; }
+
+.remove-padding {
+  padding-left: 0px !important;
+  padding-right: 0px !important; }
+
 .dark {
   background-color: black; }
 
@@ -15,6 +32,23 @@ body {
 
 .blue {
   color: #57c6c8; }
+
+.btn-pink {
+  background-color: #f8514c; }
+
+.btn-blue {
+  background-color: #57c6c8; }
+
+strong {
+  color: #57c6c8; }
+
+.btn-pink:hover {
+  background-color: #d13b35;
+  color: white; }
+
+.btn-blue:hover {
+  background-color: #47b1b3;
+  color: white; }
 
 .pink {
   color: #f8514c; }
@@ -122,6 +156,16 @@ input[type='submit'] {
   background-color: #57c6c8 !important;
   color: #ffffff; }
 
+.parag {
+  font-family: 'Lobster';
+  font-size: 20px;
+  padding-left: 5px; }
+
+.addbutton {
+  background-color: #57c6c8;
+  color: white;
+  font-family: "Lobster"; }
+
 #myDoughnut {
   max-width: 40vw !important; }
 
@@ -134,7 +178,7 @@ input[type='submit'] {
   max-height: 30vw !important; }
 
 .card {
-  color: black; }
+  color: #262626; }
 
 #frontLogo {
   padding-bottom: 13vh; }
@@ -157,5 +201,33 @@ input[type='submit'] {
 
 .active {
   color: #FFFF00 !important; }
+
+.btn-outline-danger {
+  color: #f8514c !important;
+  border-color: #f8514c !important;
+  font-family: "Lobster"; }
+
+.btn-outline-danger:hover {
+  background-color: #f8514c !important;
+  color: white !important; }
+
+.btn-outline-success {
+  color: #57c6c8 !important;
+  border-color: #57c6c8 !important;
+  font-family: "Lobster"; }
+
+.btn-outline-success:hover {
+  background-color: #57c6c8 !important;
+  color: white !important; }
+
+.story-card {
+  margin: 40px auto 0px;
+  border-radius: 25px !important;
+  min-height: 80px; }
+
+#main-container {
+  flex-grow: 1 !important;
+  display: flex;
+  justify-content: center; }
 
 /*# sourceMappingURL=style.css.map */

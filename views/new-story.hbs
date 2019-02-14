@@ -1,87 +1,107 @@
-<div class="container diary-post-div black">
-  <form action="/add-diary" method="post" autocomplete="off">
-    <div>
-      <label for="diaryTitle">Story Title:
-      </label>
-      <input required type="text" name="diaryTitle" class="form-control mb-3">
-    </div>
-    <div class="text-box mb-2">
-      <div id="editor">
-        <p>Hello World!</p>
-        <p><br></p>
+<div class="container">
+  <div class="container diary-post-div black">
+    <form action="/add-diary" method="post" autocomplete="off">
+      <div>
+        <label for="diaryTitle">Story Title:
+        </label>
+        <input required type="text" name="diaryTitle" class="form-control mb-3">
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm form-group autocomplete">
-        <label for="category">Category</label>
-        <input required type="text" name="category" class="form-control " id="myInput">
+      <div class="text-box mb-2">
+        <div id="editor">
+          <p>Hello World!</p>
+          <p><br></p>
+        </div>
       </div>
-      <div class="col-sm form-group">
-        <label for="timeSpent">Time spent</label>
-        <input required type="Number" name="timeSpent" id="timeSpent" class="form-control">
+      <div class="row">
+        <div class="col-sm form-group autocomplete">
+          <label for="category">Category</label>
+          <input required type="text" name="category" class="form-control " id="myInput">
+        </div>
+        <div class="col-sm form-group">
+          <label for="timeSpent">Time spent</label>
+          <input required type="Number" name="timeSpent" id="timeSpent" class="form-control">
+        </div>
+        <div class="col-sm form-group">
+          <label for="difficulty">Difficulty</label>
+          <select name="difficulty" id="difficulty" class="form-control">
+            <option value="1">Easy</option>
+            <option value="2">Medium</option>
+            <option value="3">Challenging</option>
+            <option value="4">Hard</option>
+            <option value="5">Very hard</option>
+          </select>
+        </div>
       </div>
-      <div class="col-sm form-group">
-        <label for="difficulty">Difficulty</label>
-        <select name="difficulty" id="difficulty" class="form-control">
-          <option value="1">Easy</option>
-          <option value="2">Medium</option>
-          <option value="3">Challenging</option>
-          <option value="4">Hard</option>
-          <option value="5">Very hard</option>
-        </select>
+      <div class="row">
+        <div class="col-sm form-group">
+          <label for="sourceType">Source type</label>
+          <select name="sourceType" id="sourceType" class="form-control form-control">
+            <option value="book">Book</option>
+            <option value="video">Video</option>
+            <option value="article">Article</option>
+            <option value="course">Course</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="col-sm form-group">
+          <label for="sourceTitle">Source title</label>
+          <input type="text" name="sourceTitle" id="sourceTitle" class="form-control">
+        </div>
+        <div class="col-sm form-group">
+          <label for="sourceLink">Source link</label>
+          <input type="text" name="sourceLink" id="sourceLink" class="form-control">
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm form-group">
-        <label for="sourceType">Source type</label>
-        <select name="sourceType" id="sourceType" class="form-control form-control">
-          <option value="book">Book</option>
-          <option value="video">Video</option>
-          <option value="article">Article</option>
-          <option value="course">Course</option>
-          <option value="other">Other</option>
-        </select>
+      <div class="d-flex justify-content-center pt-3 pb-1">
+        <input type="hidden" name="description">
+        <button type="submit" class="btn addbutton btn-color btn-lg btn-block ">Add Story</button>
       </div>
-      <div class="col-sm form-group">
-        <label for="sourceTitle">Source title</label>
-        <input type="text" name="sourceTitle" id="sourceTitle" class="form-control">
-      </div>
-      <div class="col-sm form-group">
-        <label for="sourceLink">Source link</label>
-        <input type="text" name="sourceLink" id="sourceLink" class="form-control">
-      </div>
+    </form>
+  </div>
+  {{!-- <a href="/new-story/?sort=category">category</a>
+  <a href="/new-story/?sort=timeSpent">time spent</a>
+  <a href="/new-story/?sort=created_at">latest</a> --}}
 
-    </div>
-    <div class="d-flex justify-content-center pt-3 pb-1">
-      <input type="hidden" name="description">
-      <button type="submit" class="btn btn-color btn-lg btn-block ">Add Story</button>
-    </div>
 
-  </form>
-</div>
-<a href="/new-story/?sort=category">category</a>
-<a href="/new-story/?sort=timeSpent">time spent</a>
-<a href="/new-story/?sort=created_at">latest</a>
 
-<div class="d-flex">
   {{#each diaries}}
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{this.diaryTitle}}</h5>
-      <p class="card-text">category: {{this.category}}</p>
-      <p class="card-text">time spent: {{this.timeSpent}} minutes</p>
-      <p class="card-text">Creation date: {{dateOfCreate this.created_at}}</p>
-      <p class="card-text">
-        difficulty: {{difficiltyNumber2String this.difficulty}}
-      </p>
+  <div class="container">
+    <div class=" remove-padding special">
+      <div class=" remove-padding story-card card">
+        <div class="nav card-header justify-content-between">
+          <div class="parag">
+            <p><strong class="blue">
+                <</strong> <strong class="pink"> {{this.category}}
+              </strong><strong class="blue">
+                ></strong> </p>
+          </div>
+          <div>
+            <ul class="nav">
+              <li class="nav-item pr-4">Difficulty:
+                {{difficiltyNumber2String this.difficulty}}</li>
+              <li class="nav-item pr-4">{{this.timeSpent}} min</li>
+              <li class="nav-item pr-4">{{dateOfCreate this.created_at}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="container nav card-body justify-content-between">
+          <div class="nav-item">
+            <h5 class="card-title">{{this.diaryTitle}}</h5>
+            <p class="card-text">{{{this.description}}}</p>
+          </div>
+          <div class="nav-item">
 
-      <a href="#" class="btn btn-primary">Read my diary</a>
+            <button class=" btn btn-outline-success" type="button">Edit</button>
+            <button type=" button" class="btn btn-outline-danger">Delete</button>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
   {{/each}}
 </div>
-
-
 
 
 <script>
@@ -181,22 +201,15 @@
       closeAllLists(e.target);
     });
   }
-
   var keywords = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central Arfrican Republic", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cuba", "Curacao", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland"]
-
   autocomplete(document.getElementById("myInput"), keywords);
-
-
   var quill = new Quill('#editor', {
     theme: 'snow'
   });
-
   // Listen for submit events of the form
   document.querySelector('form').onsubmit = function (event) {
     // event.preventDefault() // stop the submission
     // Save in the hidden input "description" the content of the ql editor
     document.querySelector('form input[name="description"]').value = document.querySelector('.ql-editor').innerHTML
   }
-
-
 </script>

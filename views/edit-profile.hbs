@@ -14,19 +14,21 @@
   </div>
   <div class="d-flex justify-content-center">
     <div>
-      <button type="submit" class="btn btn-primary">update profile</button>
+      <button type="submit" class="btn btn-blue">update profile</button>
     </div>
   </div>
 
 </form>
 
-<form action="/uploadAvatarImg" method="post" enctype="multipart/form-data">
-  <div class="d-flex justify-content-center pt-4">
-    <div class="form-group">
-      <label for="photo">upload your sweet profile picture here!</label>
-      <div><input type="file" name="photo" class="photo-input mr-2 form-control"></div>
-      <div><input type="submit" value="SAVE" class="btn btn-primary ml-2 form-control"></div>
-    </div>
+<div class="container">
+  <form action="/uploadAvatarImg" method="post" enctype="multipart/form-data">
+    <div class="d-flex justify-content-center pt-4">
+      <div class="form-group">
+        <label for="photo">upload your sweet profile picture here!</label>
+        <div><input type="file" name="photo" class="photo-input form-control"></div>
+        <div><input type="submit" value="SAVE" class="btn btn-blue form-control"></div>
+      </div>
 
-  </div>
-</form>
+    </div>
+  </form>
+</div>
