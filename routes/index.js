@@ -8,8 +8,35 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
+
+
 router.post('/add-diary', (req, res, next) => {
   const user = req.user;
+
+  function difficultyToString(difficulty) {
+    let result = ''
+
+    switch (difficulty) {
+      case 1:
+        result = 'easy';
+        break;
+      case 2:
+        result = 'medium'
+        break;
+      case 3:
+        result = 'challenging'
+        break;
+      case 4:
+        result = 'hard'
+        break;
+      case 5:
+        result = 'very hard'
+        break;
+
+
+    }
+    return result
+  }
 
   const {
     category,
@@ -22,7 +49,11 @@ router.post('/add-diary', (req, res, next) => {
     diaryTitle
   } = req.body;
 
-  console.log(req.body);
+  let dataString = difficultyToString(difficulty)
+  console.log('TCL: dataString', dataString)
+
+
+
 
   const newDiary = new Diary({
     _owner: user,
@@ -33,7 +64,8 @@ router.post('/add-diary', (req, res, next) => {
     sourceType,
     sourceTitle,
     sourceLink,
-    diaryTitle
+    diaryTitle,
+    difficultyString: dataString,
   });
 
   newDiary

@@ -15,24 +15,31 @@ body {
   color: #fff;
 }
 
-a {
+.btn-color,
+.p,
+.blue {
   color: #57c6c8;
-}
-
-.p {
-  color: #57c6c8;
+  background-color: #57c6c8;
 }
 
 .pink {
-  color: #f66c67;
+  color: #f8514c;
 }
 
-.blue {
-  color: #57c6c8;
+.section {
+  margin-top: -90px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  height: 950px;
 }
 
-.btn-color {
-  background-color: #57c6c8;
+.section-2 {
+  height: 650px;
+  background-color: #ccc;
+}
+
+.section-3 {
+  height: 650px;
 }
 
 textarea {
@@ -124,4 +131,20 @@ input[type='submit'] {
 #myDoughnut {
   max-width: 500px !important;
   max-height: 500px !important;
+}
+
+.card {
+  color: black;
+}
+
+#frontLogo {
+  padding-bottom: 13vh;
+}
+
+.box {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  margin: 50px 30px 50px;
+  border-radius: 10px;
 }
