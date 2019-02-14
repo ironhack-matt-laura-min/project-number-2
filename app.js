@@ -63,13 +63,22 @@ hbs.registerHelper('difficiltyNumber2String', (value) => {
   switch (value) {
     case 1: return 'Easy'
     case 2: return 'Medium'
-    case 3: return 'Hard'
-    case 4: return 'Crazy hard'
-    case 5: return 'Crazy crazy hard'
+    case 3: return 'Challenging'
+    case 4: return 'Hard'
+    case 5: return 'Very hard'
     default: return 'Unknown'
   }
 });
 
+hbs.registerHelper('dateOfCreate', (value) => {
+  let valueString = JSON.stringify(value)
+  let string = ''
+  string = valueString.substring(1, 11)
+
+  return string
+
+
+})
 // default value for title local
 app.locals.title = 'Project2';
 

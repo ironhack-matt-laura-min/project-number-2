@@ -12,7 +12,7 @@
       </div>
       <div class="col-sm form-group">
         <label for="difficulty">Difficulty</label>
-        <select name="difficulty" id="difficulty" class="form-control form-control">
+        <select name="difficulty" id="difficulty" class="form-control">
           <option value="1">Easy</option>
           <option value="2">Medium</option>
           <option value="3">Challenging</option>
@@ -64,6 +64,9 @@
 
   </form>
 </div>
+<a href="/new-story/?sort=category">category</a>
+<a href="/new-story/?sort=timeSpent">time spent</a>
+<a href="/new-story/?sort=created_at">latest</a>
 
 <div class="d-flex">
   {{#each diaries}}
@@ -72,6 +75,7 @@
       <h5 class="card-title">{{this.diaryTitle}}</h5>
       <p class="card-text">category: {{this.category}}</p>
       <p class="card-text">time spent: {{this.timeSpent}} minutes</p>
+      <p class="card-text">time spent: {{dateOfCreate this.created_at}} minutes</p>
       <p class="card-text">
         difficulty: {{difficiltyNumber2String this.difficulty}}
       </p>

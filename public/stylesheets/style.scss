@@ -111,16 +111,26 @@ input[type='submit'] {
   color: #ffffff;
 }
 
-#myChart {
-  max-width: 500px !important;
-  max-height: 500px !important;
-}
 
 #myDoughnut {
-  max-width: 500px !important;
-  max-height: 500px !important;
+  max-width: 40vw !important;
+  // max-height: 30vw !important;
+}
+
+#myChart {
+  max-width: 45vw !important;
+  max-height: 30vw !important;
+}
+#myDifficulty {
+  max-width: 45vw !important;
+  max-height: 30vw !important;
 }
 
 .card {
   color: black;
+}
+
+.profile-pic {
+  width: 20vw;
+  border-radius: 50%;
 }
