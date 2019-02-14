@@ -147,11 +147,15 @@ input[type='submit'] {
   border-radius: 10px; }
 
 .profile-pic {
-  width: 200px;
-  height: 200px; }
+  width: 350px;
+  height: 350px;
+  border-radius: 50%; }
 
 .photo-input {
   width: 20vw;
   background-color: #262626; }
+
+.active {
+  color: #FFFF00 !important; }
 
 /*# sourceMappingURL=style.css.map */

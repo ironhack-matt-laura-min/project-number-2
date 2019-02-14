@@ -3,7 +3,7 @@
     <div>
       <label for="diaryTitle">Story Title:
       </label>
-      <input type="text" name="diaryTitle" class="form-control mb-3">
+      <input required type="text" name="diaryTitle" class="form-control mb-3">
     </div>
     <div class="text-box mb-2">
       <div id="editor">
@@ -14,11 +14,11 @@
     <div class="row">
       <div class="col-sm form-group autocomplete">
         <label for="category">Category</label>
-        <input type="text" name="category" class="form-control " id="myInput">
+        <input required type="text" name="category" class="form-control " id="myInput">
       </div>
       <div class="col-sm form-group">
         <label for="timeSpent">Time spent</label>
-        <input type="Number" name="timeSpent" id="timeSpent" class="form-control">
+        <input required type="Number" name="timeSpent" id="timeSpent" class="form-control">
       </div>
       <div class="col-sm form-group">
         <label for="difficulty">Difficulty</label>
@@ -70,7 +70,7 @@
       <h5 class="card-title">{{this.diaryTitle}}</h5>
       <p class="card-text">category: {{this.category}}</p>
       <p class="card-text">time spent: {{this.timeSpent}} minutes</p>
-      <p class="card-text">time spent: {{dateOfCreate this.created_at}} minutes</p>
+      <p class="card-text">Creation date: {{dateOfCreate this.created_at}}</p>
       <p class="card-text">
         difficulty: {{difficiltyNumber2String this.difficulty}}
       </p>

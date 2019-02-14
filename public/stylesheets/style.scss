@@ -173,16 +173,21 @@ input[type='submit'] {
 }
 
 .profile-pic {
-  width: 200px;
-  height: 200px;
+  width: 350px;
+  height: 350px;
 
-  // border-radius: 50%;
+  border-radius: 50%;
 }
 
 .photo-input {
   width: 20vw;
   background-color: #262626;
 }
+
+.active {
+      
+      color:#FFFF00 !important;
+      }
 
 // extra colors
 // #FF7F50', '#FF4500', '#FF8C00', '#FFFF00', '#FFD700

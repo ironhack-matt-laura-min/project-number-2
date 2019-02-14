@@ -1,18 +1,35 @@
 <div class="d-flex justify-content-center flex-column align-items-center ">
 
   <div>
-    <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3 rounded-circle">
+    <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3 ">
 
   </div>
   <h1>{{user.username}}</h1>
-  <h1>Reach me at: {{user.email}}</h1>
+  {{#if user.email}}
+  <h1>{{user.email}}</h1>
+  {{else}}
+  <h4>update your email so people can get connected to you!</h4>
+  {{/if}}
+  {{#if user.aboutMe}}
   <h3>{{user.aboutMe}}</h3>
+  {{else}}
+  <h4>Tell us more about yourself!</h4>
+  {{/if}}
 
 
-  <a href="/edit-profile/{{user._id}}" class="btn btn-primary">edit profile</a>
+  <a href="/edit-profile" class="btn btn-primary">edit profile</a>
 </div>
 
 <br>
+
+{{#if diaries}}
+
+{{else}}
+<div class="container text-center pt-5">
+  <h2>You don't have any stories yet, do you want to share some of your learning journey?</h2>
+
+</div>
+{{/if}}
 
 <div class="bg-color">
   <div class="d-flex justify-content-center">
@@ -26,6 +43,7 @@
 </div>
 
 <div>
+
 
   {{#each diaries}}
   <div class="card" style="width: 18rem;">

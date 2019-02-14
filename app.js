@@ -76,9 +76,17 @@ hbs.registerHelper('dateOfCreate', (value) => {
   string = valueString.substring(1, 11)
 
   return string
-
-
 })
+
+hbs.registerHelper('activePage', (value) => {
+  let valueString = JSON.stringify(value)
+  let string = ''
+  string = valueString.substring(1, 11)
+
+  return string
+})
+
+hbs
 // default value for title local
 app.locals.title = 'Project2';
 
@@ -98,6 +106,35 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use((req, res, next) => {
+  console.log('aaaaaaaaa' + req.originalUrl)
+  console.log("aaaaaaaaaa" + res) // truthy => true; falsy => false
+  next()
+})
+
+app.use((req, res, next) => {
+  console.log('This is my 1st middleware')
+  if (req.url === '/') {
+    res.locals.activeClass = { home: true }
+  }
+  if (req.url === '/profile') {
+    res.locals.activeClass = { profile: true }
+  }
+  if (req.url === '/read-stories') {
+    res.locals.activeClass = { readStories: true }
+  }
+  if (req.url === '/new-story') {
+    res.locals.activeClass = { newStory: true }
+  }
+  if (req.url === '/auth/login') {
+    res.locals.activeClass = { login: true }
+  }
+  if (req.url === '/auth/signup') {
+    res.locals.activeClass = { signup: true }
+  }
+
+  next()
+})
 
 const index = require('./routes/index');
 app.use('/', index);
