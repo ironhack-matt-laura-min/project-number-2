@@ -9,7 +9,7 @@
   <h3>{{user.aboutMe}}</h3>
 
 
-  <a href="/edit-profile/{{user._id}}">edit profile</a>
+  <a href="/edit-profile/{{user._id}}" class="btn btn-primary">edit profile</a>
 </div>
 
 <br>
@@ -95,7 +95,7 @@
           timeSpent: entry.timeSpent
         };
       }
-      obj[entry.category].timeSpent += entry.timeSpent;
+      else obj[entry.category].timeSpent += entry.timeSpent;
 
       return obj;
     }, {}));
@@ -133,7 +133,7 @@
           timeUsed: 1
         };
       }
-      obj[entry.sourceType].timeUsed += 1;
+      else obj[entry.sourceType].timeUsed += 1;
 
       return obj;
     }, {}));
@@ -176,7 +176,7 @@
           timeUsed: 1
         };
       }
-      obj[entry.difficulty].timeUsed += 1;
+      else obj[entry.difficulty].timeUsed += 1;
 
       return obj;
     }, {}));
@@ -203,6 +203,7 @@
         }]
       },
       options: {
+
         scales: {
           yAxes: [{
             ticks: {
@@ -211,6 +212,9 @@
             }
           }]
         }
+
+
+
       }
     });
   });
