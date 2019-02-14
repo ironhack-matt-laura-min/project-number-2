@@ -1,19 +1,20 @@
-<div class="d-flex justify-content-center flex-column align-items-center bg-secondary">
+<div class="d-flex justify-content-center flex-column align-items-center ">
 
   <div>
-    <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3">
+    <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3 rounded-circle">
 
   </div>
   <h1>{{user.username}}</h1>
-  <h1>Email : {{user.email}}</h1>
+  <h1>Reach me at: {{user.email}}</h1>
+  <h3>{{user.aboutMe}}</h3>
 
-  <a href="/edit-profile/{{user._id}}">edit profile</a>
+
+  <a href="/edit-profile/{{user._id}}" class="btn btn-primary">edit profile</a>
 </div>
 
+<br>
 
-
-
-<div class="bg-white">
+<div class="bg-color">
   <div class="d-flex justify-content-center">
     <canvas id="myDoughnut"></canvas>
   </div>
@@ -68,22 +69,20 @@
 
     switch (difficulty) {
       case 1:
-        result = 'easy';
+        result = 'Easy';
         break;
       case 2:
-        result = 'medium'
+        result = 'Medium'
         break;
       case 3:
-        result = 'challenging'
+        result = 'Challenging'
         break;
       case 4:
-        result = 'hard'
+        result = 'Hard'
         break;
       case 5:
-        result = 'very hard'
+        result = 'Very Hard'
         break;
-
-
     }
     return result
   }
@@ -96,7 +95,7 @@
           timeSpent: entry.timeSpent
         };
       }
-      obj[entry.category].timeSpent += entry.timeSpent;
+      else obj[entry.category].timeSpent += entry.timeSpent;
 
       return obj;
     }, {}));
@@ -118,7 +117,7 @@
         labels: diaryTitle,
         datasets: [{
           label: "Time spent",
-          backgroundColor: ['#7FFF00', '#32CD32', '#98FB98', '#00FA9A', '#3CB371', '#2E8B57', '#4682B4'],
+          backgroundColor: ['#57C6C8', '#57AAC8', '#578EC8', '#5771C8', '#5957C8', '#7557C8', '#7FFF00'],
 
           data: diaryTime,
         }]
@@ -134,7 +133,7 @@
           timeUsed: 1
         };
       }
-      obj[entry.sourceType].timeUsed += 1;
+      else obj[entry.sourceType].timeUsed += 1;
 
       return obj;
     }, {}));
@@ -150,8 +149,8 @@
       data: {
         labels: diaryTitle,
         datasets: [{
-          label: "Time spent",
-          backgroundColor: ['#FF7F50', '#FF4500', '#FF8C00', '#FFFF00', '#FFD700'],
+          label: "Source Type",
+          backgroundColor: ['#7FFF00', '#32CD32', '#98FB98', '#00FA9A', '#3CB371', '#2E8B57'],
           borderColor: 'black',
           data: diaryTime,
         }]
@@ -177,7 +176,7 @@
           timeUsed: 1
         };
       }
-      obj[entry.difficulty].timeUsed += 1;
+      else obj[entry.difficulty].timeUsed += 1;
 
       return obj;
     }, {}));
@@ -197,13 +196,14 @@
       data: {
         labels: diaryTitle,
         datasets: [{
-          label: "Time spent",
-          backgroundColor: ['#FF7F50', '#FF4500', '#FF8C00', '#FFFF00', '#FFD700'],
+          label: "Difficulty",
+          backgroundColor: ['#F8514C', '#F87C4C', '#F8A74C', '#F8D24C', '#FFD700'],
           borderColor: 'black',
           data: diaryTime,
         }]
       },
       options: {
+
         scales: {
           yAxes: [{
             ticks: {
@@ -212,6 +212,9 @@
             }
           }]
         }
+
+
+
       }
     });
   });

@@ -1,6 +1,6 @@
 const express = require('express');
 const Diary = require('../models/Diary');
-const User = require('../models/User')
+const User = require('../models/User');
 const router = express.Router();
 const { checkConnected } = require('../configs/middlewares');
 const uploadCloud = require('../configs/cloudinary.js');
@@ -9,8 +9,6 @@ const uploadCloud = require('../configs/cloudinary.js');
 router.get('/', (req, res, next) => {
   res.render('index');
 });
-
-
 
 router.post('/add-diary', (req, res, next) => {
   const user = req.user;
@@ -35,7 +33,7 @@ router.post('/add-diary', (req, res, next) => {
     sourceType,
     sourceTitle,
     sourceLink,
-    diaryTitle,
+    diaryTitle
   });
 
   newDiary
@@ -54,44 +52,43 @@ router.get('/new-story', checkConnected, (req, res, next) => {
   // .sort({ timeSpent: 1 })
 
   if (req.query.sort) {
-    let sortingOption = req.query.sort
-    var sortString = `{"${sortingOption}":1}`
-    var sortObj = JSON.parse(sortString)
-    Diary.find({ _owner: req.user }).sort(sortObj).populate('_owner').lean()
+    let sortingOption = req.query.sort;
+    var sortString = `{"${sortingOption}":1}`;
+    var sortObj = JSON.parse(sortString);
+    Diary.find({ _owner: req.user })
+      .sort(sortObj)
+      .populate('_owner')
+      .lean()
       .then(diaries => {
-
+        res.render('new-story', { diaries });
+      });
+  } else {
+    Diary.find({ _owner: req.user })
+      .populate('_owner')
+      .lean()
+      .then(diaries => {
         res.render('new-story', { diaries });
       });
   }
-  else {
-    Diary.find({ _owner: req.user }).populate('_owner').lean()
-      .then(diaries => {
-
-        res.render('new-story', { diaries });
-      });
-  }
-
-
 });
 
-router.get('/profile', (req, res, next) => {
-  const user = req.user
+router.get('/profile', checkConnected, (req, res, next) => {
+  const user = req.user;
 
   res.render('Profile', { user });
 });
 
 router.get('/edit-profile/:Id', (req, res, next) => {
-  console.log(req.params.Id)
-  User.findById(req.params.Id)
-    .then((user) => {
-      res.render('edit-profile', { user });
-
-    })
+  console.log(req.params.Id);
+  User.findById(req.params.Id).then(user => {
+    res.render('edit-profile', { user });
+  });
 });
 
-router.post('/edit-profile', (req, res, next) => {
+router.post('/edit-profile', checkConnected, (req, res, next) => {
   let email = req.body.email
-  User.findByIdAndUpdate(req.user._id, { email: email })
+  let aboutMe = req.body.aboutMe
+  User.findByIdAndUpdate(req.user._id, { email: email, aboutMe: aboutMe })
     .then(() => {
       res.redirect('/profile')
     })
@@ -109,5 +106,24 @@ router.post("/uploadAvatarImg/:Id", uploadCloud.single('photo'), (req, res, next
 
 
 
+router.post(
+  '/uploadAvatarImg/:Id',
+  uploadCloud.single('photo'),
+  (req, res, next) => {
+    const id = req.params.Id;
+    User.findOneAndUpdate({ _id: id }, { imgPath: req.file.url })
+      .then(() => console.log('done'))
+      .catch(err => {
+        console.log('error at Post / upload', err);
+      });
+  }
+);
+
+router.get('/read-stories', checkConnected, (req, res, next) => {
+  Diary.find()
+    .then(diaries => {
+      res.render('read-stories', { diaries })
+    })
+})
 
 module.exports = router;
