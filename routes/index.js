@@ -72,7 +72,7 @@ router.get('/new-story', checkConnected, (req, res, next) => {
   }
 });
 
-router.get('/profile', (req, res, next) => {
+router.get('/profile', checkConnected, (req, res, next) => {
   const user = req.user;
 
   res.render('Profile', { user });
@@ -85,7 +85,7 @@ router.get('/edit-profile/:Id', (req, res, next) => {
   });
 });
 
-router.post('/edit-profile', (req, res, next) => {
+router.post('/edit-profile', checkConnected, (req, res, next) => {
   let email = req.body.email
   let aboutMe = req.body.aboutMe
   User.findByIdAndUpdate(req.user._id, { email: email, aboutMe: aboutMe })
@@ -112,11 +112,18 @@ router.post(
   (req, res, next) => {
     const id = req.params.Id;
     User.findOneAndUpdate({ _id: id }, { imgPath: req.file.url })
-      .then(() => res.redirect('/profile'))
+      .then(() => console.log('done'))
       .catch(err => {
         console.log('error at Post / upload', err);
       });
   }
 );
+
+router.get('/read-stories', checkConnected, (req, res, next) => {
+  Diary.find()
+    .then(diaries => {
+      res.render('read-stories', { diaries })
+    })
+})
 
 module.exports = router;

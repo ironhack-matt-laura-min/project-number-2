@@ -7,7 +7,7 @@ const userSchema = new Schema({
   email: String,
   imgPath: {
     type: String,
-    default: 'https://res.cloudinary.com/dvaul5gwx/image/upload/v1550139009/folder-name/02th-egg-person.jpg'
+    default: 'https://res.cloudinary.com/dvaul5gwx/image/upload/v1550141779/folder-name/default-profile-icon-24.jpg'
   },
   imgName: String,
   aboutMe: String,

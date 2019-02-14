@@ -54,7 +54,7 @@ textarea {
   background-color: #57c6c8; }
 
 .diary-post-div {
-  background-color: black;
+  background-color: #ccc;
   margin-top: 30px;
   border-radius: 20px;
   padding: 15px; }
@@ -143,6 +143,6 @@ input[type='submit'] {
 
 .photo-input {
   width: 20vw;
-  background-color: #6c757d; }
+  background-color: #262626; }
 
 /*# sourceMappingURL=style.css.map */
