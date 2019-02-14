@@ -19,6 +19,9 @@ body {
 .pink {
   color: #f8514c; }
 
+.black {
+  color: black; }
+
 .section {
   margin-top: -90px;
   margin-bottom: 20px;
@@ -54,10 +57,16 @@ textarea {
   background-color: #57c6c8; }
 
 .diary-post-div {
-  background-color: black;
+  background-color: #ccc;
   margin-top: 30px;
   border-radius: 20px;
   padding: 15px; }
+
+.text-box {
+  background-color: #fff;
+  color: black;
+  height: 300px;
+  border-radius: 10px; }
 
 * {
   box-sizing: border-box; }
