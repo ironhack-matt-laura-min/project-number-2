@@ -55,7 +55,7 @@ router.get('/new-story', checkConnected, (req, res, next) => {
     let sortingOption = req.query.sort;
     var sortString = `{"${sortingOption}":1}`;
     var sortObj = JSON.parse(sortString);
-    Diary.find({ _owner: req.user })
+    Diary.find({ _owner: req.user }, { limit: 3 })
       .sort(sortObj)
       .populate('_owner')
       .lean()
@@ -63,7 +63,7 @@ router.get('/new-story', checkConnected, (req, res, next) => {
         res.render('new-story', { diaries });
       });
   } else {
-    Diary.find({ _owner: req.user })
+    Diary.find({ _owner: req.user }).limit(3)
       .populate('_owner')
       .lean()
       .then(diaries => {
@@ -74,8 +74,34 @@ router.get('/new-story', checkConnected, (req, res, next) => {
 
 router.get('/profile', checkConnected, (req, res, next) => {
   const user = req.user;
+  if (req.query.sort) {
+    let sortingOption = req.query.sort;
+    var sortString = `{"${sortingOption}":1}`;
+    var sortObj = JSON.parse(sortString);
+    Diary.find({ _owner: req.user })
+      .sort(sortObj)
+      .populate('_owner')
+      .lean()
+      .then(diaries => {
+        res.render('profile', { diaries, user });
+      });
+  } else {
+    Diary.find({ _owner: req.user })
+      .populate('_owner')
+      .lean()
+      .then(diaries => {
+        res.render('profile', { diaries, user });
+      });
+  }
 
-  res.render('Profile', { user });
+
+
+});
+
+router.get('/profile/:Id', (req, res, next) => {
+  User.findById(req.params.Id).then(user => {
+    res.render('user-profile', { user });
+  });
 });
 
 router.get('/edit-profile', checkConnected, (req, res, next) => {
@@ -94,24 +120,12 @@ router.post('/edit-profile', checkConnected, (req, res, next) => {
     })
 })
 
-
-
-router.post("/uploadAvatarImg", uploadCloud.single('photo'), (req, res, next) => {
-  User.findByIdAndUpdate(req.user._id, { imgPath: req.file.url })
-    .then(() => res.redirect('/profile'))
-    .catch(err => { console.log("error at Post / upload", err) })
-
-})
-
-
-
 router.post(
   '/uploadAvatarImg',
   uploadCloud.single('photo'),
   (req, res, next) => {
-    const id = req.user._id;
-    User.findOneAndUpdate({ _id: id }, { imgPath: req.file.url })
-      .then(() => console.log('done'))
+    User.findByIdAndUpdate(req.user._id, { imgPath: req.file.url })
+      .then(() => res.redirect('/profile'))
       .catch(err => {
         console.log('error at Post / upload', err);
       });
@@ -120,9 +134,40 @@ router.post(
 
 router.get('/read-stories', checkConnected, (req, res, next) => {
   Diary.find()
+    .populate('_owner')
     .then(diaries => {
-      res.render('read-stories', { diaries })
-    })
-})
+      res.render('read-stories', { diaries });
+    });
+});
+
+router.get('/read-story/:Id', (req, res, next) => {
+  Diary.findById(req.params.Id)
+    .populate('_owner')
+    .then(diary => {
+      res.render('read-story', { diary });
+    });
+});
+
+router.get('/delete-story/:id', checkConnected, (req, res, next) => {
+  console.log(req.params.id);
+  Diary.findByIdAndDelete(req.params.id).then(() => {
+    res.redirect('/new-story');
+  });
+});
+
+router.get('/edit-story/:id', checkConnected, (req, res, next) => {
+  console.log(req.params.id);
+  Diary.findById(req.params.id).then(diary => {
+    res.render('edit-story', { diary });
+  });
+});
+
+router.post('/edit-story', checkConnected, (req, res, next) => {
+  Diary.findByIdAndUpdate(req.user._id, { description: description }).then(
+    () => {
+      res.redirect('/new-story');
+    }
+  );
+});
 
 module.exports = router;

@@ -1,44 +1,18 @@
 <div class="d-flex justify-content-center flex-column align-items-center ">
 
   <div>
-    <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3 ">
+    <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3 rounded-circle">
 
   </div>
   <h1>{{user.username}}</h1>
-  {{#if user.email}}
-  <h1>{{user.email}}</h1>
-  {{else}}
-  <div class="container text-center pt-1 px-5">
-    <h4>update your email to connect with other user!</h4>
-
-  </div>
-  {{/if}}
-  {{#if user.aboutMe}}
-  <div class="container text-center pt-1 px-5">
-    <h3>{{user.aboutMe}}</h3>
-
-  </div>
-  {{else}}
-  <div class="container text-center pt-1 px-5">
-    <h4>Tell us more about yourself!</h4>
-
-  </div>
-  {{/if}}
+  <h1>Reach me at: {{user.email}}</h1>
+  <h3>{{user.aboutMe}}</h3>
 
 
-  <a href="/edit-profile" class="btn btn-primary mt-4">edit profile</a>
+  <a href="/edit-profile" class="btn btn-primary">edit profile</a>
 </div>
 
 <br>
-
-{{#if diaries}}
-
-{{else}}
-<div class="container text-center pt-5 px-5">
-  <h2>You don't have any stories yet, do you want to share some of your learning journey?</h2>
-
-</div>
-{{/if}}
 
 <div class="bg-color">
   <div class="d-flex justify-content-center">
@@ -51,45 +25,24 @@
   </div>
 </div>
 
-<a href="/profile/?sort=category">category</a>
-<a href="/profile/?sort=timeSpent">time spent</a>
-<a href="/profile/?sort=created_at">latest</a>
+<div>
 
-<div class="container">
   {{#each diaries}}
-  <div class="container diary-post-div black">
-    <div class="container2">
-      <div class="d-flex bd-highlight">
-        <div class="mr-auto p-2">
-          <h4><strong>
-              <</strong> <span class="pink">{{this.diaryTitle}} </span><strong>
-                  >
-                </strong>
-          </h4></span>
-        </div>
-        <div class="p-2 bd-highlight pink titlefont">
-          <h2>{{this.category}}</h2>
-        </div>
-      </div>
-      <div class="pl-2">
-        <p>Time spent: {{this.timeSpent}} mins</p>
-      </div>
-      <div class="pl-2">
-        <p>Difficulty: {{difficiltyNumber2String this.difficulty}}</p>
-      </div>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{this.diaryTitle}}</h5>
+      <p class="card-text">category: {{this.category}}</p>
+      <p class="card-text">time spent: {{this.timeSpent}} minutes</p>
+      <p class="card-text">
+        difficulty: {{difficiltyNumber2String this.difficulty}}
+      </p>
 
-      <div class="mr-auto p-2">
-        <a href="/read-story/{{this._id}}" class="btn btn-blue bg-font">Read Story</a>
-      </div>
+      <a href="#" class="btn btn-primary">Read my diary</a>
     </div>
-  </div> {{/each}}
-
+  </div>
+  {{/each}}
 
 </div>
-
-
-
-
 
 <script>
 
@@ -259,9 +212,6 @@
             }
           }]
         }
-
-
-
       }
     });
   });

@@ -34,19 +34,21 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto navigation-menu">
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a {{#if activeClass.home}} class="nav-link active" {{/if}} class="nav-link" href="/">Home</a>
           </li>
           {{#if isConnected}}
           <li class="nav-item">
-            <a class="nav-link" href="/profile">Profile</a>
+            <a {{#if activeClass.profile}} class="nav-link active" {{/if}} class="nav-link" href="/profile">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/new-story">Write a story</a>
+            <a {{#if activeClass.newStory}} class="nav-link active" {{/if}} class="nav-link" href="/new-story">Write a
+              story</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/read-stories">Read stories</a>
+            <a {{#if activeClass.readStories}} class="nav-link active" {{/if}} class="nav-link" href="/read-stories">Read
+              stories</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/auth/logout">Logout</a>
@@ -54,10 +56,10 @@
 
           {{else}}
           <li class="nav-item">
-            <a class="nav-link" href="/auth/login">Login</a>
+            <a {{#if activeClass.login}} class="nav-link active" {{/if}} class="nav-link" href="/auth/login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/auth/signup">Signup</a>
+            <a {{#if activeClass.signup}} class="nav-link active" {{/if}} class="nav-link" href="/auth/signup">Signup</a>
           </li>
           {{/if}}
         </ul>
@@ -76,3 +78,12 @@
 </body>
 
 </html>
+
+<script>
+  $(document).ready(function () {
+    $('ul li a').click(function () {
+      $('li a').removeClass("active");
+      $(this).addClass("active");
+    });
+  });
+</script>

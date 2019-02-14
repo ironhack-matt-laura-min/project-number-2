@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="container diary-post-div black">
+    <form action="/add-diary" method="post" autocomplete="off">
+      <div>
+        <label for="diaryTitle">Story Title:
+        </label>
+        <input type="text" name="diaryTitle" class="form-control mb-3" value="{{diary.diaryTitle}}">
+      </div>
+      <div class="text-box mb-2">
+        <div id="editor">
+          <p>{{{diary.description}}}</p>
+          <p><br></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm form-group autocomplete">
+          <label for="category">Category</label>
+          <input type="text" name="category" class="form-control " id="myInput" value="{{diary.category}}">
+        </div>
+        <div class="col-sm form-group">
+          <label for="timeSpent">Time spent</label>
+          <input type="Number" name="timeSpent" id="timeSpent" class="form-control" value="{{diary.timeSpent}}">
+        </div>
+        <div class="col-sm form-group">
+          <label for="difficulty">Difficulty</label>
+          <select name="difficulty" id="difficulty" class="form-control">
+            <option value="1">Easy</option>
+            <option value="2">Medium</option>
+            <option value="3">Challenging</option>
+            <option value="4">Hard</option>
+            <option value="5">Very hard</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm form-group">
+          <label for="sourceType">Source type</label>
+          <select name="sourceType" id="sourceType" class="form-control form-control">
+            <option value="book">Book</option>
+            <option value="video">Video</option>
+            <option value="article">Article</option>
+            <option value="course">Course</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="col-sm form-group">
+          <label for="sourceTitle">Source title</label>
+          <input type="text" name="sourceTitle" id="sourceTitle" class="form-control" value="{{diary.sourceTitle}}">
+        </div>
+        <div class="col-sm form-group">
+          <label for="sourceLink">Source link</label>
+          <input type="text" name="sourceLink" id="sourceLink" class="form-control" value="{{diary.sourceLink}}">
+        </div>
+      </div>
+      <div class="d-flex justify-content-center pt-3 pb-1">
+        <input type="hidden" name="description">
+        <button type="submit" class="btn addbutton btn-color btn-lg btn-block ">Update Story</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    var quill = new Quill('#editor', {
+      theme: 'snow'
+    });
+
+    document.querySelector('form').onsubmit = function (event) {
+      // event.preventDefault() // stop the submission
+      // Save in the hidden input "description" the content of the ql editor
+      document.querySelector('form input[name="description"]').value = document.querySelector('.ql-editor').innerHTML
+    }
+  </script>

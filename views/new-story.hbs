@@ -4,7 +4,7 @@
       <div>
         <label for="diaryTitle">Story Title:
         </label>
-        <input type="text" name="diaryTitle" class="form-control mb-3">
+        <input required type="text" name="diaryTitle" class="form-control mb-3">
       </div>
       <div class="text-box mb-2">
         <div id="editor">
@@ -15,11 +15,11 @@
       <div class="row">
         <div class="col-sm form-group autocomplete">
           <label for="category">Category</label>
-          <input type="text" name="category" class="form-control " id="myInput">
+          <input required type="text" name="category" class="form-control " id="myInput">
         </div>
         <div class="col-sm form-group">
           <label for="timeSpent">Time spent</label>
-          <input type="Number" name="timeSpent" id="timeSpent" class="form-control">
+          <input required type="Number" name="timeSpent" id="timeSpent" class="form-control">
         </div>
         <div class="col-sm form-group">
           <label for="difficulty">Difficulty</label>
@@ -62,12 +62,10 @@
   <a href="/new-story/?sort=timeSpent">time spent</a>
   <a href="/new-story/?sort=created_at">latest</a> --}}
 
-
-
   {{#each diaries}}
-  <div>
-    <div class="row remove-padding special">
-      <div class="col remove-padding story-card card">
+  <div class="container">
+    <div class=" remove-padding special">
+      <div class=" remove-padding story-card card">
         <div class="nav card-header justify-content-between">
           <div class="parag">
             <p><strong class="blue">
@@ -90,10 +88,8 @@
             <p class="card-text">{{{this.description}}}</p>
           </div>
           <div class="nav-item">
-
-            <button class=" btn btn-outline-success" type="button">Edit</button>
-            <button type=" button" class="btn btn-outline-danger">Delete</button>
-
+            <a href="/edit-story/{{this._id}}" class="btn btn-outline-success">Edit</a>
+            <a href="/delete-story/{{this._id}}" class="btn btn-outline-danger">Delete</a>
           </div>
         </div>
       </div>
@@ -102,6 +98,7 @@
 
   {{/each}}
 </div>
+
 
 <script>
   function autocomplete(inp, arr) {

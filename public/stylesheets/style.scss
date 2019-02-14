@@ -38,6 +38,12 @@ body {
   background-color: #262626;
 }
 
+.container2 {
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+}
+
 .card-header {
   padding: 5px !important;
   font-size: 10px;
@@ -61,6 +67,28 @@ body {
 
 .blue {
   color: #57c6c8;
+}
+
+.btn-pink {
+  background-color: #f8514c;
+}
+
+.btn-blue {
+  background-color: #57c6c8;
+}
+
+strong {
+  color: #57c6c8;
+}
+
+.btn-pink:hover {
+  background-color: #d13b35;
+  color: white;
+}
+
+.btn-blue:hover {
+  background-color: #47b1b3;
+  color: white;
 }
 
 .pink {
@@ -228,10 +256,10 @@ input[type='submit'] {
 }
 
 .profile-pic {
-  width: 200px;
-  height: 200px;
+  width: 350px;
+  height: 350px;
 
-  // border-radius: 50%;
+  border-radius: 50%;
 }
 
 .photo-input {
@@ -239,6 +267,10 @@ input[type='submit'] {
   background-color: #262626;
 }
 
+.active {
+      
+      color:#FFFF00 !important;
+      }
 .btn-outline-danger {
   color:#f8514c !important;
   border-color: #f8514c !important;
@@ -266,10 +298,16 @@ border-radius: 25px !important;
 min-height: 80px;
 }
 
-.special {
-  border: 0 auto;
-  max-width: 900px;
-  align-items: center;
+// .special {
+//   border: 0 auto;
+//   max-width: 900px;
+//   align-items: center;
+// }
+
+#main-container {
+  flex-grow: 1 !important;
+  display: flex;
+  justify-content: center;
 }
 
 
