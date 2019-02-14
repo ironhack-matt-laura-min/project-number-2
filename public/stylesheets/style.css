@@ -109,8 +109,8 @@ input[type='submit'] {
   color: black; }
 
 .profile-pic {
-  width: 20vw;
-  border-radius: 50%; }
+  width: 200px;
+  height: 200px; }
 
 .photo-input {
   width: 20vw;

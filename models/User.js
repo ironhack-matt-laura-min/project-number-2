@@ -5,8 +5,12 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  imgPath: String,
-  imgName: String
+  imgPath: {
+    type: String,
+    default: 'https://res.cloudinary.com/dvaul5gwx/image/upload/v1550139009/folder-name/02th-egg-person.jpg'
+  },
+  imgName: String,
+  aboutMe: String,
 }, {
     timestamps: {
       createdAt: 'created_at',

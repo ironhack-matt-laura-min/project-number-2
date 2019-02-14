@@ -1,11 +1,13 @@
 <div class="d-flex justify-content-center flex-column align-items-center bg-secondary">
 
   <div>
-    <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3">
+    <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3 rounded-circle">
 
   </div>
   <h1>{{user.username}}</h1>
-  <h1>Email : {{user.email}}</h1>
+  <h1>Reach me at: {{user.email}}</h1>
+  <h3>{{user.aboutMe}}</h3>
+
 
   <a href="/edit-profile/{{user._id}}">edit profile</a>
 </div>

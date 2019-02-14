@@ -91,7 +91,8 @@ router.get('/edit-profile/:Id', (req, res, next) => {
 
 router.post('/edit-profile', (req, res, next) => {
   let email = req.body.email
-  User.findByIdAndUpdate(req.user._id, { email: email })
+  let aboutMe = req.body.aboutMe
+  User.findByIdAndUpdate(req.user._id, { email: email, aboutMe: aboutMe })
     .then(() => {
       res.redirect('/profile')
     })
