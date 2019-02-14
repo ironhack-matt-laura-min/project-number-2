@@ -78,9 +78,9 @@ router.get('/profile', checkConnected, (req, res, next) => {
   res.render('Profile', { user });
 });
 
-router.get('/edit-profile/:Id', (req, res, next) => {
-  console.log(req.params.Id);
-  User.findById(req.params.Id).then(user => {
+router.get('/edit-profile', checkConnected, (req, res, next) => {
+  console.log(req.params.id);
+  User.findById(req.user._id).then(user => {
     res.render('edit-profile', { user });
   });
 });
@@ -96,9 +96,8 @@ router.post('/edit-profile', checkConnected, (req, res, next) => {
 
 
 
-router.post("/uploadAvatarImg/:Id", uploadCloud.single('photo'), (req, res, next) => {
-  const id = req.params.Id
-  User.findOneAndUpdate({ _id: id }, { imgPath: req.file.url })
+router.post("/uploadAvatarImg", uploadCloud.single('photo'), (req, res, next) => {
+  User.findByIdAndUpdate(req.user._id, { imgPath: req.file.url })
     .then(() => res.redirect('/profile'))
     .catch(err => { console.log("error at Post / upload", err) })
 
@@ -107,10 +106,10 @@ router.post("/uploadAvatarImg/:Id", uploadCloud.single('photo'), (req, res, next
 
 
 router.post(
-  '/uploadAvatarImg/:Id',
+  '/uploadAvatarImg',
   uploadCloud.single('photo'),
   (req, res, next) => {
-    const id = req.params.Id;
+    const id = req.user._id;
     User.findOneAndUpdate({ _id: id }, { imgPath: req.file.url })
       .then(() => console.log('done'))
       .catch(err => {

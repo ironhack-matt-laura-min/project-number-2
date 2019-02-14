@@ -76,8 +76,6 @@ hbs.registerHelper('dateOfCreate', (value) => {
   string = valueString.substring(1, 11)
 
   return string
-
-
 })
 // default value for title local
 app.locals.title = 'Project2';
