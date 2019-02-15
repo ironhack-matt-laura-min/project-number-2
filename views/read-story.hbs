@@ -1,23 +1,24 @@
-<div class="container remove-padding">
-  <div class="col remove-padding story-card card">
-    <div class="nav card-header">
-      <span class="p-1">
-        <h6>{{dateOfCreate diary.created_at}}</h6>
-      </span>
-    </div>
-    <div class="p-1">
-      <div class="d-flex bd-highlight">
-        <div class="mr-auto p-2">
-          <h4>{{diary.diaryTitle}} by {{diary._owner.username}}
-          </h4></span>
-        </div>
-        <div class="p-2 bd-highlight pink titlefont">
-          <h2><strong>
-              <</strong> {{diary.category}} <strong>>
-            </strong></h2>
-        </div>
+<div class="container diary-post-div black">
+  <div class="container2">
+    <div class="d-flex bd-highlight">
+      <div class="mr-auto p-2">
+        <h4><strong>
+            <</strong> <span class="pink">{{diary.diaryTitle}} </span><strong>
+                >
+              </strong>
+        </h4></span>
       </div>
-      <div class="p-2">{{{diary.description}}}</div>
+      <div class="p-2 bd-highlight pink titlefont">
+        <h2>{{diary.category}}</h2>
+      </div>
     </div>
+    <h6 class="p-2">Author : {{diary._owner.username}}</h6>
+    <h6 class="p-2">Written on : {{dateOfCreate diary.created_at}}</h6>
+    <h6 class="p-2">Source type : {{ diary.sourceType}}</h6>
+    <h6 class="p-2">Source title : {{ diary.sourceTitle}}</h6>
+    <h6 class="p-2">Source link : {{ diary.sourceLink}}</h6>
+    <br>
+    <br>
+    <div></div>
+    <h4 class="p-3">{{{diary.description}}}</h4>
   </div>
-</div>

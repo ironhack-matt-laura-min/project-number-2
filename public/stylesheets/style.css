@@ -15,7 +15,7 @@
   font-family: 'Lobster', cursive; }
 
 .section-4 {
-  background-color: #ccc;
+  background-color: #262626;
   height: 650px; }
 
 .titlefont {
@@ -102,7 +102,8 @@ strong {
   background-color: #686868; }
 
 .section-3 {
-  height: 650px; }
+  height: 650px;
+  background-color: #505050; }
 
 textarea {
   resize: none;
@@ -211,6 +212,9 @@ input[type='submit'] {
 #myDifficulty {
   max-width: 450px !important;
   max-height: 400px !important; }
+
+.graph-div {
+  width: 650px; }
 
 .chart-div {
   width: 400px;

@@ -3,14 +3,13 @@
   <div class="col remove-padding story-card card">
     <div class="nav card-header">
       <span class="p-1">
-        <h6>{{dateOfCreate this.created_at}}</h6>
+        <h6 class="ml-2">{{dateOfCreate this.created_at}}</h6>
       </span>
     </div>
     <div class="p-1">
       <div class="d-flex bd-highlight">
         <div class="mr-auto p-2">
-          <h4><span class=""></span>{{this.diaryTitle}} </span> by <span class=""> <a
-                href="/profile/{{this._owner._id}}">{{this._owner.username}}</a>
+          <h4><span class=""></span>{{this.diaryTitle}} </span> by <span class=""> <a href="/profile/{{this._owner._id}}">{{this._owner.username}}</a>
           </h4></span>
         </div>
         <div class="p-2 bd-highlight pink titlefont">
