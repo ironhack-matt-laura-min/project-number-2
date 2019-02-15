@@ -193,17 +193,22 @@ input[type='submit'] {
 }
 
 #myDoughnut {
-  max-width: 40vw !important;
+  max-width: 350px !important;
   // max-height: 30vw !important;
 }
 
 #myChart {
-  max-width: 45vw !important;
-  max-height: 30vw !important;
+  max-width: 650px !important;
+  max-height: 600px !important;
 }
 #myDifficulty {
-  max-width: 45vw !important;
-  max-height: 30vw !important;
+  max-width: 450px !important;
+  max-height: 400px !important;
+}
+
+.chart-div {
+  width: 400px;
+  height:400px;
 }
 
 .card {
@@ -236,7 +241,7 @@ input[type='submit'] {
 
 .active {
       
-      color:#FFFF00 !important;
+      color:#f8514c !important;
       }
 .btn-outline-danger {
   color:#f8514c !important;

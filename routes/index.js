@@ -5,6 +5,7 @@ const router = express.Router();
 const { checkConnected } = require('../configs/middlewares');
 const uploadCloud = require('../configs/cloudinary.js');
 
+
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index');
@@ -99,9 +100,32 @@ router.get('/profile', checkConnected, (req, res, next) => {
 });
 
 router.get('/profile/:Id', (req, res, next) => {
-  User.findById(req.params.Id).then(user => {
-    res.render('user-profile', { user });
-  });
+  let user = req.user
+  if (req.params.Id == req.user._id) {
+    res.redirect('/profile')
+  } else {
+
+    if (req.query.sort) {
+      let sortingOption = req.query.sort;
+      var sortString = `{"${sortingOption}":1}`;
+      var sortObj = JSON.parse(sortString);
+      Promise.all([
+        Diary.find({ _owner: req.params.Id }).sort(sortObj).populate('_owner').lean(),
+        User.find({ _id: req.params.Id })
+        ,])
+        .then(([diaries, user]) => {
+          res.render('user-profile', { diaries, user });
+        });
+    } else {
+      Promise.all([
+        Diary.find({ _owner: req.params.Id }).populate('_owner').lean(),
+        User.find({ _id: req.params.Id })
+        ,])
+        .then(([diaries, user]) => {
+          res.render('user-profile', { diaries, user });
+        });
+    }
+  }
 });
 
 router.get('/edit-profile', checkConnected, (req, res, next) => {
@@ -133,7 +157,7 @@ router.post(
 );
 
 router.get('/read-stories', checkConnected, (req, res, next) => {
-  Diary.find()
+  Diary.find({ _owner: { $ne: req.user._id } })
     .populate('_owner')
     .then(diaries => {
       res.render('read-stories', { diaries });
@@ -162,12 +186,22 @@ router.get('/edit-story/:id', checkConnected, (req, res, next) => {
   });
 });
 
-router.post('/edit-story', checkConnected, (req, res, next) => {
-  Diary.findByIdAndUpdate(req.user._id, { description: description }).then(
-    () => {
-      res.redirect('/new-story');
-    }
-  );
+router.post('/edit-story/:id', checkConnected, (req, res, next) => {
+  Diary.findByIdAndUpdate(req.params.id,
+    {
+      description: req.body.description,
+      diaryTitle: req.body.diaryTitle,
+      category: req.body.category,
+      timeSpent: req.body.timeSpent,
+      difficulty: req.body.difficulty,
+      sourceType: req.body.sourceType,
+      sourceLink: req.body.sourceLink,
+      sourceTitle: req.body.sourceTitle
+    }).then(
+      () => {
+        res.redirect('/new-story');
+      }
+    );
 });
 
 module.exports = router;
