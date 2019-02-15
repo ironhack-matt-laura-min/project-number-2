@@ -3,6 +3,13 @@
 * {
   font-family: 'Varela Round', sans-serif; }
 
+.secondf {
+  font-family: 'Varela Round', sans-serif;
+  size: 40; }
+
+.mainfont {
+  font-family: 'Lobster', cursive; }
+
 .title2 h2 {
   font-size: 50px;
   font-family: 'Lobster', cursive; }
@@ -64,7 +71,8 @@
   background-color: #f8514c; }
 
 .btn-blue {
-  background-color: #57c6c8; }
+  background-color: #57c6c8 !important;
+  border-color: #57c6c8 !important; }
 
 strong {
   color: #57c6c8; }
