@@ -124,7 +124,7 @@ strong {
 
 .section-2 {
   height: 650px;
-  background-color: #ccc;
+  background-color: #686868;
 }
 
 .section-3 {
@@ -227,7 +227,6 @@ input[type='submit'] {
   background-color: #57c6c8 !important;
   color: #ffffff;
 }
-
 .parag {
   font-family: 'Lobster';
   font-size:20px;
@@ -238,12 +237,10 @@ input[type='submit'] {
   color: white;
   font-family: "Lobster";
 }
-
 #myDoughnut {
   max-width: 350px !important;
   // max-height: 30vw !important;
 }
-
 #myChart {
   max-width: 650px !important;
   max-height: 600px !important;
@@ -252,16 +249,13 @@ input[type='submit'] {
   max-width: 450px !important;
   max-height: 400px !important;
 }
-
 .chart-div {
   width: 400px;
   height:400px;
 }
-
 .card {
   color: #262626;
 }
-
 #frontLogo {
   margin: 0;
   background-image: url(../images/0_TbEDCh4nVDmw7QJs.jpg);
@@ -269,7 +263,6 @@ input[type='submit'] {
   background-repeat: no-repeat;
   height: 800px;
 }
-
 .box {
   background-color: white;
   color: black;
@@ -277,30 +270,23 @@ input[type='submit'] {
   margin: 50px 30px 50px;
   border-radius: 10px;
 }
-
 .profile-pic {
   width: 350px;
   height: 350px;
-
   border-radius: 50%;
 }
-
 .photo-input {
   width: 20vw;
   background-color: #262626;
 }
-
 .active {
-      
       color:#f8514c !important;
       }
 .btn-outline-danger {
   color:#f8514c !important;
   border-color: #f8514c !important;
   font-family:"Lobster";
-
 }
-
 .btn-outline-danger:hover {
   background-color:  #f8514c !important;
   color: white !important;
@@ -310,7 +296,6 @@ input[type='submit'] {
   border-color: #57c6c8 !important;
   font-family:"Lobster";
 }
-
 .btn-outline-success:hover {
   background-color:  #57c6c8 !important;
   color: white !important;
@@ -320,7 +305,6 @@ margin: 40px auto 0px;
 border-radius: 25px !important;
 min-height: 80px;
 }
-
 #main-container {
   flex-grow: 1 !important;
   display: flex;
