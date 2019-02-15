@@ -95,12 +95,10 @@ router.get('/profile', checkConnected, (req, res, next) => {
       });
   }
 
-
-
 });
 
 router.get('/profile/:Id', (req, res, next) => {
-  let user = req.user
+  const user = req.user
   if (req.params.Id == req.user._id) {
     res.redirect('/profile')
   } else {
@@ -119,10 +117,12 @@ router.get('/profile/:Id', (req, res, next) => {
     } else {
       Promise.all([
         Diary.find({ _owner: req.params.Id }).populate('_owner').lean(),
-        User.find({ _id: req.params.Id })
+        User.findById(req.params.Id)
         ,])
         .then(([diaries, user]) => {
-          res.render('user-profile', { diaries, user });
+          console.log('TCL: user', user)
+
+          res.render('user-profile', { diaries, user: user });
         });
     }
   }
