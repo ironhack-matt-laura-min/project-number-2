@@ -1,10 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+
 body {
-  font: 14px 'Sailec Light', sans-serif;
+  font-family: 'Varela Round', sans-serif;
+}
+.section-2 h2{
+  font-size: 50px;
+  font-family: 'Lobster', cursive;
 }
 
 .titlefont {
   font-family: 'Lobster', cursive;
-}// 'Lucida Grande', Helvetica, Arial, sans-serif
+  font-size: 90px;
+}
+
+.sectionp p {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 30px;
+  max-width: 500px;
+}
+.section-2 li {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 30px;
+  max-width: 500px;
+}
+.picture-div {
+  height: 60vh;
+}
+
+#navbarSupportedContent {
+  font-family: 'Varela Round', sans-serif;
+
+}
+/// 'Lucida Grande', Helvetica, Arial, sans-serif
 .bg-color {
   background-color: #262626;
 }
@@ -84,6 +113,17 @@ strong {
 
 .section-3 {
   height: 650px;
+}
+
+.section-3 h2 {
+  font-size: 50px;
+  font-family: 'Lobster', cursive;
+}
+
+.section-3 li {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 30px;
+  max-width: 500px;
 }
 
 textarea {
@@ -216,7 +256,11 @@ input[type='submit'] {
 }
 
 #frontLogo {
-  padding-bottom: 13vh;
+  margin: 0;
+  background-image: url(../images/0_TbEDCh4nVDmw7QJs.jpg);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  height: 800px;
 }
 
 .box {
@@ -281,6 +325,8 @@ min-height: 80px;
   display: flex;
   justify-content: center;
 }
+
+
 
 // extra colors
 // #FF7F50', '#FF4500', '#FF8C00', '#FFFF00', '#FFD700
