@@ -1,215 +1,288 @@
 <div class="d-flex justify-content-center flex-column align-items-center ">
 
   <div>
-    <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3 rounded-circle">
+    <img src="{{user.imgPath}}" alt="" class="profile-pic pt-3 ">
 
   </div>
   <h1>{{user.username}}</h1>
-  <h1>Reach me at: {{user.email}}</h1>
-  <h3>{{user.aboutMe}}</h3>
+  {{#if user.email}}
+  <h1>{{user.email}}</h1>
+  {{else}}
+  <div class="container text-center pt-1 px-5">
+    <h4>update your email to connect with other users!</h4>
+
+  </div>
+  {{/if}}
+  {{#if user.aboutMe}}
+  <div class="container text-center pt-1 px-5">
+    <h3>{{user.aboutMe}}</h3>
+
+  </div>
+  {{else}}
+  <div class="container text-center pt-1 px-5">
+    <h4>Tell us more about yourself!</h4>
+
+  </div>
+  {{/if}}
 
 
-  <br>
+  <a href="/edit-profile" class="btn btn-primary btn-blue mt-4">edit profile</a>
+</div>
 
-  <div class="bg-color">
-    <div class="d-flex justify-content-center">
-      <canvas id="myDoughnut"></canvas>
-    </div>
+<br>
 
-    <div class="d-flex justify-content-center">
+{{#if diaries}}
+
+{{else}}
+<div class="container text-center pt-5 px-5">
+  <h2>You don't have any stories yet, do you want to share some of your learning journey?</h2>
+
+</div>
+{{/if}}
+<div class="d-flex justify-content-center">
+  <h3 class="secondf pt-5 mt-5">Analytics</h3>
+</div>
+<div class="bg-color">
+  <div class="d-flex justify-content-center align-items-center mt-5 flex-wrap">
+    <div class="chart-div d-flex flex-column justify-content-center align-items-center">
+      <h4 class="pb-3">Sources used</h4>
       <canvas id="myChart" class="pr-3"></canvas>
+    </div>
+    <div class="chart-div d-flex flex-column justify-content-center align-items-center">
+      <h4 class="pb-3">Allocated time spent</h4>
+      <canvas id="myDoughnut" class="mx-2"></canvas>
+    </div>
+    <div class="chart-div d-flex flex-column justify-content-center align-items-center">
+      <h4 class="pb-3">Difficulty</h4>
       <canvas id="myDifficulty" class="pl-3"></canvas>
     </div>
+
+
   </div>
 
-  <div>
-    {{#each diaries}}
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">{{this.diaryTitle}}</h5>
-        <p class="card-text">category: {{this.category}}</p>
-        <p class="card-text">time spent: {{this.timeSpent}} minutes</p>
-        <p class="card-text">
-          difficulty: {{difficiltyNumber2String this.difficulty}}
-        </p>
+  <div class="d-flex justify-content-center">
 
-        <a href="#" class="btn btn-primary">Read my diary</a>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <h3 class="secondf pt-5 mt-5">{{user.username}}'s stories</h3>
+</div>
+<div class="d-flex justify-content-center pt-3 mt-3">
+
+  <a href="/profile/?sort=category" class="btn btn-blue bg-font mx-3">category</a>
+  <a href="/profile/?sort=timeSpent" class="btn btn-blue bg-font mx-3">time spent</a>
+  <a href="/profile/?sort=created_at" class="btn btn-blue bg-font mx-3">latest</a>
+  <a href="/profile/?sort=sourceType" class="btn btn-blue bg-font mx-3">Source type</a>
+</div>
+
+
+
+</div>
+
+{{#each diaries}}
+<div class="container diary-post-div black">
+  <div class="container2">
+    <div class="d-flex bd-highlight">
+      <div class="mr-auto p-2">
+        <h4><strong>
+            <</strong> <span class="pink">{{this.diaryTitle}} </span><strong>
+                >
+              </strong>
+        </h4></span>
+      </div>
+      <div class="p-2 bd-highlight pink titlefont">
+        <h2>{{this.category}}</h2>
       </div>
     </div>
-    {{/each}}
+    <div class="pl-2">
+      <p>Time spent: {{this.timeSpent}} mins</p>
+    </div>
+    <div class="pl-2">
+      <p>Difficulty: {{difficiltyNumber2String this.difficulty}}</p>
+    </div>
 
+
+
+    <div class="mr-auto p-2">
+      <a href="/read-story/{{this._id}}" class="btn btn-blue mainfont bg-font">Read Story</a>
+    </div>
   </div>
+</div> {{/each}}
 
-  <script>
 
-    const diaryInfo = axios.create({
-      baseURL: '/api/diaries',
+<script>
+
+  const diaryInfo = axios.create({
+    baseURL: '/api/diaries',
+  });
+
+  diaryInfo.get()
+    .then(response => {
+      printTheDoughnut(response.data)
+      printTheChart(response.data)
+      printTheDifficulty(response.data)
+    })
+    .catch(error => {
+      console.log(error);
     });
 
-    diaryInfo.get()
-      .then(response => {
-        printTheDoughnut(response.data)
-        printTheChart(response.data)
-        printTheDifficulty(response.data)
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  function hello() {
+    console.log('hi')
+  }
 
-    function hello() {
-      console.log('hi')
+  function difficultyToString(difficulty) {
+    let result = ''
+
+    switch (difficulty) {
+      case 1:
+        result = 'Easy';
+        break;
+      case 2:
+        result = 'Medium'
+        break;
+      case 3:
+        result = 'Challenging'
+        break;
+      case 4:
+        result = 'Hard'
+        break;
+      case 5:
+        result = 'Very Hard'
+        break;
     }
+    return result
+  }
 
-    function difficultyToString(difficulty) {
-      let result = ''
-
-      switch (difficulty) {
-        case 1:
-          result = 'Easy';
-          break;
-        case 2:
-          result = 'Medium'
-          break;
-        case 3:
-          result = 'Challenging'
-          break;
-        case 4:
-          result = 'Hard'
-          break;
-        case 5:
-          result = 'Very Hard'
-          break;
+  const printTheDoughnut = (diariesData => {
+    let newDiariesData = Object.values(diariesData.reduce(function (obj, entry) {
+      if (!(entry.category in obj)) {
+        obj[entry.category] = {
+          category: entry.category,
+          timeSpent: entry.timeSpent
+        };
       }
-      return result
-    }
+      else obj[entry.category].timeSpent += entry.timeSpent;
 
-    const printTheDoughnut = (diariesData => {
-      let newDiariesData = Object.values(diariesData.reduce(function (obj, entry) {
-        if (!(entry.category in obj)) {
-          obj[entry.category] = {
-            category: entry.category,
-            timeSpent: entry.timeSpent
-          };
-        }
-        else obj[entry.category].timeSpent += entry.timeSpent;
+      return obj;
+    }, {}));
 
-        return obj;
-      }, {}));
-
-      const diaryTitle = newDiariesData.map(diary => diary.category);
-      const diaryTime = newDiariesData.map(diary => Number((diary.timeSpent / 60).toFixed(2)));
+    const diaryTitle = newDiariesData.map(diary => diary.category);
+    const diaryTime = newDiariesData.map(diary => Number((diary.timeSpent / 60).toFixed(2)));
 
 
-      const ctx = document.getElementById('myDoughnut').getContext('2d');
-      const chart = new Chart(ctx, {
-        type: 'doughnut',
+    const ctx = document.getElementById('myDoughnut').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'doughnut',
 
-        options: {
-          onClick: hello
+      options: {
+        onClick: hello
 
 
-        },
-        data: {
-          labels: diaryTitle,
-          datasets: [{
-            label: "Time spent",
-            backgroundColor: ['#57C6C8', '#57AAC8', '#578EC8', '#5771C8', '#5957C8', '#7557C8', '#7FFF00'],
+      },
+      data: {
+        labels: diaryTitle,
+        datasets: [{
+          label: "Time spent",
+          backgroundColor: ['#57C6C8', '#57AAC8', '#578EC8', '#5771C8', '#5957C8', '#7557C8', '#7FFF00'],
 
-            data: diaryTime,
+          data: diaryTime,
+        }]
+      }
+    });
+  });
+
+  const printTheChart = (diariesData => {
+    let newDiariesData = Object.values(diariesData.reduce(function (obj, entry) {
+      if (!(entry.sourceType in obj)) {
+        obj[entry.sourceType] = {
+          sourceType: entry.sourceType,
+          timeUsed: 1
+        };
+      }
+      else obj[entry.sourceType].timeUsed += 1;
+
+      return obj;
+    }, {}));
+
+    console.log(newDiariesData)
+
+    const diaryTitle = newDiariesData.map(diary => diary.sourceType);
+    const diaryTime = newDiariesData.map(diary => diary.timeUsed);
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      responsive: true,
+      data: {
+        labels: diaryTitle,
+        datasets: [{
+          label: "Source Type",
+          backgroundColor: ['#7FFF00', '#32CD32', '#98FB98', '#00FA9A', '#3CB371', '#2E8B57'],
+          borderColor: 'black',
+          data: diaryTime,
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              suggestedMin: 0,
+
+            }
           }]
         }
-      });
+      }
     });
+  });
 
-    const printTheChart = (diariesData => {
-      let newDiariesData = Object.values(diariesData.reduce(function (obj, entry) {
-        if (!(entry.sourceType in obj)) {
-          obj[entry.sourceType] = {
-            sourceType: entry.sourceType,
-            timeUsed: 1
-          };
-        }
-        else obj[entry.sourceType].timeUsed += 1;
+  const printTheDifficulty = (diariesData => {
+    let newDiariesData = Object.values(diariesData.reduce(function (obj, entry) {
+      if (!(entry.difficulty in obj)) {
+        obj[entry.difficulty] = {
+          difficulty: entry.difficulty,
+          timeUsed: 1
+        };
+      }
+      else obj[entry.difficulty].timeUsed += 1;
 
-        return obj;
-      }, {}));
+      return obj;
+    }, {}));
 
-      console.log(newDiariesData)
+    console.log(newDiariesData)
 
-      const diaryTitle = newDiariesData.map(diary => diary.sourceType);
-      const diaryTime = newDiariesData.map(diary => diary.timeUsed);
-      const ctx = document.getElementById('myChart').getContext('2d');
-      const chart = new Chart(ctx, {
-        type: 'bar',
-        responsive: true,
-        data: {
-          labels: diaryTitle,
-          datasets: [{
-            label: "Source Type",
-            backgroundColor: ['#7FFF00', '#32CD32', '#98FB98', '#00FA9A', '#3CB371', '#2E8B57'],
-            borderColor: 'black',
-            data: diaryTime,
+    const diaryTitle = newDiariesData.map(diary => { return difficultyToString(diary.difficulty) });
+
+    console.log(diaryTitle)
+
+    const diaryTime = newDiariesData.map(diary => diary.timeUsed);
+    console.log('TCL: diaryTime', diaryTime)
+    const ctx = document.getElementById('myDifficulty').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      responsive: true,
+      data: {
+        labels: diaryTitle,
+        datasets: [{
+          label: "Difficulty",
+          backgroundColor: ['#F8514C', '#F87C4C', '#F8A74C', '#F8D24C', '#FFD700'],
+          borderColor: 'black',
+          data: diaryTime,
+        }]
+      },
+      options: {
+
+        scales: {
+          yAxes: [{
+            ticks: {
+              suggestedMin: 0,
+
+            }
           }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                suggestedMin: 0,
-
-              }
-            }]
-          }
         }
-      });
+
+
+
+      }
     });
+  });
 
-    const printTheDifficulty = (diariesData => {
-      let newDiariesData = Object.values(diariesData.reduce(function (obj, entry) {
-        if (!(entry.difficulty in obj)) {
-          obj[entry.difficulty] = {
-            difficulty: entry.difficulty,
-            timeUsed: 1
-          };
-        }
-        else obj[entry.difficulty].timeUsed += 1;
-
-        return obj;
-      }, {}));
-
-      console.log(newDiariesData)
-
-      const diaryTitle = newDiariesData.map(diary => { return difficultyToString(diary.difficulty) });
-
-      console.log(diaryTitle)
-
-      const diaryTime = newDiariesData.map(diary => diary.timeUsed);
-      console.log('TCL: diaryTime', diaryTime)
-      const ctx = document.getElementById('myDifficulty').getContext('2d');
-      const chart = new Chart(ctx, {
-        type: 'bar',
-        responsive: true,
-        data: {
-          labels: diaryTitle,
-          datasets: [{
-            label: "Difficulty",
-            backgroundColor: ['#F8514C', '#F87C4C', '#F8A74C', '#F8D24C', '#FFD700'],
-            borderColor: 'black',
-            data: diaryTime,
-          }]
-        },
-        options: {
-
-          scales: {
-            yAxes: [{
-              ticks: {
-                suggestedMin: 0,
-
-              }
-            }]
-          }
-        }
-      });
-    });
-
-  </script>
+</script>
